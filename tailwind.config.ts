@@ -14,6 +14,7 @@ export default {
         brand:{
           green:{
             100: "#1E8A45",
+            200: "#2DBF61",
           },
         },
       },

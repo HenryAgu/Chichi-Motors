@@ -21,7 +21,7 @@ const navigation: Navigation[] = [
 const Navbar = () => {
   return (
     <section className="shadow-custom fixed top-0 left-0 right-0 z-50 bg-[#FBFBFB]">
-      <div className="flex items-center justify-between py-5 px-[50px]">
+      <div className="flex items-center container mx-auto justify-between py-5 px-[50px]">
         <div className="flex items-center gap-x-12">
           <Link href="/" className="">
             <Image
