@@ -45,9 +45,9 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="">
-          <button className="bg-brand-green-100 py-2.5 px-6 text-sm font-semibold text-white rounded-lg">
+          <Link href="/contact" className="bg-brand-green-100 py-2.5 px-6 text-sm font-semibold text-white rounded-lg">
             Contact Us
-          </button>
+          </Link>
         </div>
       </div>
     </section>
