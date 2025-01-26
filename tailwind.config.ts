@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand:{
+          green:{
+            100: "#1E8A45",
+          },
+        },
       },
       boxShadow: {
         custom: "0 5px 16px 0 rgba(175, 175, 175, 0.251)", 
