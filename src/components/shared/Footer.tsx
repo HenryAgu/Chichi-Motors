@@ -45,9 +45,9 @@ const socials: Socials[] = [
 const Footer = () => {
   return (
     <footer className="bg-brand-green-100 rounded-tl-lg rounded-tr-lg">
-      <div className="px-[50px] flex">
-        <div className="basis-[40%] border-r flex flex-col border-brand-green-200 pt-16 pb-[32px]">
-          <div className="border-b border-brand-green-200 pb-2">
+      <div className="md:px-[50px] px-5 flex md:flex-row flex-col">
+        <div className="basis-[40%] md:border-r flex flex-col border-brand-green-200 pt-16 md:pb-[32px]">
+          <div className="md:border-b border-brand-green-200 md:pb-2">
             <Image
               src="/images/location.svg"
               width={50}
@@ -55,21 +55,21 @@ const Footer = () => {
               className="h-[50px] w-[50px]"
               alt="icon"
             />
-            <p className="text-[42px] text-white font-bold mb-2">Find our Store</p>
+            <p className="text-[32px] md:text-[42px] text-white font-bold mb-2">Find our Store</p>
             <span className="text-base text-white font-normal tracking-tight">
               Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station, Eligbolo
               <br /> Port Harcourt, Rivers State
             </span>
           </div>
-          <div className="pt-14">
-            <p className="text-[42px] text-white font-bold mb-2">Contact Us</p>
+          <div className="pt-14 border-b md:border-b-0 border-brand-green-200 pb-5 md:pb-0">
+            <p className="text-[32px] md:text-[42px] text-white font-bold mb-2">Contact Us</p>
             <span className="text-base text-white font-normal tracking-tight">
               E-mail: chichimotors@gmail.com <br />
               Tel: 09029465338
             </span>
           </div>
         </div>
-        <div className="basis-[60%] pt-16 pl-24 pb-[32px] flex flex-col gap-y-[74px]">
+        <div className="basis-[60%] pt-16 md:pl-24 pb-[32px] flex flex-col gap-y-12 md:gap-y-[74px]">
           <div className="flex flex-col gap-y-4">
             {navigation.map((item) => (
               <Link
@@ -83,28 +83,10 @@ const Footer = () => {
           </div>
           <div className="flex flex-col">
             <Link href="/contact" className="flex items-center gap-x-2">
-              <span className="text-[42px] font-bold text-white underline">
+              <span className="text-[32px] md:text-[42px] font-bold text-white underline">
                 Get a Quote Today
               </span>
-              <svg
-                width="42"
-                height="42"
-                viewBox="0 0 42 42"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clipPath="url(#clip0_123_275)">
-                  <path
-                    d="M15.75 8.75V12.25H27.2825L7 32.5325L9.4675 35L29.75 14.7175V26.25H33.25V8.75H15.75Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_123_275">
-                    <rect width="42" height="42" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
+              <Image src="/images/arrow.svg" alt="icon" width={27} height={27} className="h-[27px] w-[27px]"/>
             </Link>
             <span className="text-base text-white font-normal tracking-tight">
               Leave us a message on WhatsApp
