@@ -1,3 +1,4 @@
+import TopSeller from "@/components/TopSeller";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,6 +8,11 @@ interface CarLogos {
   alt: string;
 }
 
+interface WhyUs {
+  header: string;
+  content: string;
+}
+
 const carLogos: CarLogos[] = [
   {
     src: "/images/KIA_logo3.png",
@@ -14,7 +20,7 @@ const carLogos: CarLogos[] = [
   },
   {
     src: "/images/Toyota_EU 1.png",
-    alt: "kia",
+    alt: "toyota",
   },
   {
     src: "/images/layer1.png",
@@ -34,10 +40,28 @@ const carLogos: CarLogos[] = [
   },
 ];
 
+const whyUs: WhyUs[] = [
+  {
+    header: "Quality you can count on",
+    content:
+      "Every vehicle we sell is carefully inspected by our certified technicians. We perform a comprehensive multi-point inspection to ensure it meets our high standards for safety, performance, and reliability. You’ll drive off with peace of mind, knowing your car is ready for the road ahead.",
+  },
+  {
+    header: "Transparent Pricing",
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you’ll pay. We believe in clear, upfront pricing so you can make your purchase with confidence, knowing you’re getting great value for your money.",
+  },
+  {
+    header: "Flexible Financing Options",
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you’ll pay. We believe in clear, upfront pricing so you can make your purchase with confidence, knowing you’re getting great value for your money.",
+  },
+];
+
 const Home = () => {
   return (
-    <main className="min-h-screen pt-32 px-[50px] bg-white text-black">
-      <section className="flex items-center">
+    <main className="min-h-screen pt-32 bg-white text-black">
+      <section className="flex items-center  px-5 md:px-[50px]">
         <div className="basis-[40%] ml-20 flex flex-col gap-y-6">
           <h1 className="text-black text-[42px] font-bold tracking-tighter leading-[50px]">
             Get <span className="text-brand-green-100">Affordable</span>{" "}
@@ -64,8 +88,42 @@ const Home = () => {
             className="h-[480px] w-[720px]"
           />
           <div className="flex items-center justify-end mr-24 gap-x-12">
-            {carLogos.map((logo)=>(
-              <Image src={logo.src} alt={logo.alt} height={20} width={141.34} className="h-5 w-fit" key={logo.alt}/>
+            {carLogos.map((logo) => (
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                height={20}
+                width={141.34}
+                className="h-5 w-fit"
+                key={logo.alt}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Top Seller */}
+      <TopSeller />
+      {/* Why Buy From Us? */}
+      <section className="mb-32 ml-20  px-5 md:px-[50px]">
+        <h3 className="text-[32px] font-normal text-black tracking-tighter">
+          Why Buy From Us?
+        </h3>
+        <div className="mt-10 flex">
+          <div className="basis-[50%]">
+            <Image
+              src="/images/why-us.png"
+              alt="image"
+              width={568}
+              height={590}
+              className="w-[568px] h-[590px] aspect-[568/590]"
+            />
+          </div>
+          <div className="basis-[50%] flex flex-col gap-y-10 ml-20">
+            {whyUs.map((why) => (
+              <div className="flex flex-col max-w-[435px] gap-y-3" key={why.header}>
+                <h5 className="text-brand-green-100 font-normal text-[32px] tracking-tighter">{why.header}</h5>
+                <p className="text-base text-black tracking-tighter">{why.content}</p>
+              </div>
             ))}
           </div>
         </div>

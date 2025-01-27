@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.className} container mx-auto antialiased`}
+        className={`${openSans.className} container mx-auto antialiased bg-white`}
       >
         <Navbar/>
         {children}
