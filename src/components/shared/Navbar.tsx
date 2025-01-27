@@ -2,8 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { RiCloseLargeLine } from "react-icons/ri";
 
 interface Navigation {
   title: string;
