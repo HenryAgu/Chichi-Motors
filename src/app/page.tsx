@@ -1,3 +1,4 @@
+import GetQuote from "@/components/shared/GetQuote";
 import TopSeller from "@/components/TopSeller";
 import Image from "next/image";
 import Link from "next/link";
@@ -128,6 +129,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Get Quote */}
+      <GetQuote/>
     </main>
   );
 };
