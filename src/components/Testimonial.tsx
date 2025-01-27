@@ -30,12 +30,12 @@ const testimonial: Testimonials[] = [
 
 const Testimonial = () => {
   return (
-    <section className="mx-32 my-24">
+    <section className="md:mx-32 mx-5 my-24">
       <div className="flex flex-col gap-y-2">
-        <h5 className="text-[42px] font-normal tracking-tighter text-black">
+        <h5 className="text-[32px] leading-10 md:text-[42px] font-normal tracking-tighter text-black">
           Hear from our Customers
         </h5>
-        <p className="text-[#969696] text-base font-normal tracking-tight max-w-[480px]">
+        <p className="text-[#969696] text-sm md:text-base font-normal tracking-tight max-w-[480px]">
           We’re not just selling cars... we’re building lasting relationships.
           When you buy from us, you’re becoming part of our family.
         </p>
@@ -49,7 +49,7 @@ const Testimonial = () => {
             <span className="text-5xl text-brand-green-100 font-medium pb-[-50px]">
               &quot;
             </span>
-            <p className="max-w-[321px] text-black text-base font-normal">
+            <p className="max-w-[321px] text-black text-sm md:text-base font-normal">
               {item.content}
             </p>
             <span className="text-5xl text-brand-green-100 font-medium flex justify-end">

@@ -89,7 +89,7 @@ const Home = () => {
             height={480}
             className="md:h-[480px] md:w-[720px] h-[254px] w-full"
           />
-          <div className="flex items-center justify-end mr-24 gap-x-12">
+          <div className="flex flex-wrap gap-6 items-center justify-center md:justify-end md:mr-24 md:gap-x-12 mt-12 w-full">
             {carLogos.map((logo) => (
               <Image
                 src={logo.src}
@@ -106,25 +106,25 @@ const Home = () => {
       {/* Top Seller */}
       <TopSeller />
       {/* Why Buy From Us? */}
-      <section className="mb-32 ml-20  px-5 md:px-[50px]">
-        <h3 className="text-[32px] font-normal text-black tracking-tighter">
+      <section className="mb-32 md:ml-20  px-5 md:px-[50px]">
+        <h3 className="text-2xl md:text-[32px] font-normal text-black tracking-tighter">
           Why Buy From Us?
         </h3>
-        <div className="mt-10 flex">
+        <div className="mt-10 flex flex-col gap-y-12 md:flex-row">
           <div className="basis-[50%]">
             <Image
               src="/images/why-us.png"
               alt="image"
               width={568}
               height={590}
-              className="w-[568px] h-[590px] aspect-[568/590]"
+              className="md:w-[568px] w-full md:h-[590px] h-[407px] aspect-[568/590]"
             />
           </div>
-          <div className="basis-[50%] flex flex-col gap-y-10 ml-20">
+          <div className="basis-[50%] flex flex-col gap-y-10 md:ml-20">
             {whyUs.map((why) => (
               <div className="flex flex-col max-w-[435px] gap-y-3" key={why.header}>
-                <h5 className="text-brand-green-100 font-normal text-[32px] tracking-tighter">{why.header}</h5>
-                <p className="text-base text-black tracking-tighter">{why.content}</p>
+                <h5 className="text-brand-green-100 font-normal text-2xl md:text-[32px] tracking-tighter">{why.header}</h5>
+                <p className="text-sm md:text-base text-black tracking-tighter">{why.content}</p>
               </div>
             ))}
           </div>
