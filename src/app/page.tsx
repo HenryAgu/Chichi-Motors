@@ -96,7 +96,7 @@ const Home = () => {
                 alt={logo.alt}
                 height={20}
                 width={141.34}
-                className="h-5 w-fit"
+                className="h-5 md:h-fit w-fit"
                 key={logo.alt}
               />
             ))}
