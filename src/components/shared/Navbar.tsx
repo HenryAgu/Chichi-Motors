@@ -91,6 +91,7 @@ const Navbar = () => {
                   href={item.path}
                   key={item.title}
                   className="capitalize text-4xl font-bold hover:font-semibold transition-all duration-200 ease-linear text-white"
+                  onClick={handleClose}
                 >
                   {item.title}
                 </Link>

@@ -193,7 +193,7 @@ const ShowRoom = () => {
 							alt={car.name}
 							width={397}
 							height={322}
-							className="aspect-[397/322] object-cover mb-4 rounded-[8px]"
+							className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
 						/>
 						<div className="flex flex-col gap-y-3">
 							<p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
