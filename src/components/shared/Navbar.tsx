@@ -58,16 +58,21 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="flex items-center gap-x-6">
-          <Link href="/contact" className="bg-brand-green-100 py-2.5 px-6 text-sm font-semibold text-white rounded-lg">
+          <Link
+            href="/contact"
+            className="bg-brand-green-100 py-2.5 px-6 text-sm font-semibold text-white rounded-lg"
+          >
             Contact Us
           </Link>
           <div className="flex md:hidden">
-            <button onClick={() => setIsMenuOpen(true)}><AiOutlineMenu className="text-3xl"/></button>
+            <button onClick={() => setIsMenuOpen(true)}>
+              <AiOutlineMenu className="text-3xl" />
+            </button>
           </div>
         </div>
         {isMenuOpen && (
           <div
-            className={`flex flex-col bg-brand-green-200 rounded-bl-lg rounded-br-lg text-white absolute top-[-10px] h-screen py-8 w-full right-0 animate-slideDown ${
+            className={`flex flex-col justify-between bg-brand-green-200 rounded-bl-lg rounded-br-lg text-white absolute top-[-10px] h-screen py-8 w-full right-0 animate-slideDown ${
               isExiting ? "animate-slideUp" : "animate-slideDown"
             }`}
           >
@@ -77,8 +82,36 @@ const Navbar = () => {
                 className="font-aeonikRegular h-fit w-fit"
                 onClick={handleClose}
               >
-                <RiCloseLargeLine className="text-3xl"/>
+                <RiCloseLargeLine className="text-3xl" />
               </button>
+            </div>
+            <div className="mx-5 flex flex-col gap-y-10">
+              {navigation.map((item) => (
+                <Link
+                  href={item.path}
+                  key={item.title}
+                  className="capitalize text-4xl font-bold hover:font-semibold transition-all duration-200 ease-linear text-white"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+            <div className="mx-5">
+              <Link
+                href="/contact"
+                className="flex items-center gap-x-1 md:gap-x-2"
+              >
+                <span className="text-[32px] md:text-[42px] font-bold text-white underline">
+                  Get a Quote Today
+                </span>
+                <Image
+                  src="/images/arrow.svg"
+                  alt="icon"
+                  width={27}
+                  height={27}
+                  className="md:h-[27px] md:w-[27px] h-6 w-6"
+                />
+              </Link>
             </div>
           </div>
         )}
