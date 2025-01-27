@@ -3,7 +3,17 @@ import { FiSearch } from "react-icons/fi";
 
 import type { Metadata } from "next";
 import Image from "next/image";
-
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export const metadata: Metadata = {
 	title: "Showroom | Chichi Motors",
 	description:
@@ -25,6 +35,7 @@ type Car = {
 	interiorColor: string;
 	exteriorColor: string;
 	image: string;
+  id:string;
 };
 
 const cars: Car[] = [
@@ -35,6 +46,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "Used",
@@ -43,6 +55,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "New",
@@ -51,6 +64,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "Used",
@@ -59,6 +73,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "New",
@@ -67,6 +82,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "Used",
@@ -75,6 +91,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "New",
@@ -83,6 +100,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "Used",
@@ -91,6 +109,7 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 	{
 		type: "New",
@@ -99,55 +118,77 @@ const cars: Car[] = [
 		interiorColor: "Blue",
 		exteriorColor: "Black",
 		image: "/images/car.png",
+		id: crypto.randomUUID(),
 	},
 ];
 const ShowRoom = () => {
 	return (
-		<main className="pt-36 px-10">
+		<main className="pt-36 md:px-10 px-[30px]">
 			<section>
 				<p className="text-black text-[32px] leading-[43.58px] font-normal mb-14 ">
 					Showroom
 				</p>
-				<div className="flex items-center justify-start gap-x-10">
-					<div className="flex items-center gap-x-2 border border-garage-gray-500 px-3.5 py-2.5 rounded-lg w-[400px]">
+				<div className="flex items-center justify-start gap-10 flex-col md:flex-row">
+					<div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5  w-[400px]">
 						<input
 							placeholder="Search by Name, Brand and Colour"
-							className="w-full text-garage-gray-650 text-sm   focus:ring-transparent focus:outline-none"
+							className="w-full text-garage-gray-650 text-sm   focus:ring-transparent focus:outline-none "
 						/>
 						<FiSearch className="text-garage-gray-650 w-[15.24px] h-[15.24px]" />
 					</div>
-					<div className="flex gap-x-4 ">
-						<button
-							type="button"
-							className="px-4 py-[10px] text-black border hover:bg-[#F8F7F7] rounded-lg text-[13px] "
+					<div className="flex items-center justify-center gap-4 w-full md:w-auto">
+						<Button
+							variant={"outline"}
+							size={"sm"}
+							className="w-full md:w-auto"
 						>
 							All
-						</button>
-						<button
-							type="button"
-							className="px-4 py-[10px]  text-black border hover:bg-[#F8F7F7] rounded-lg text-[13px]"
+						</Button>
+						<Button
+							variant={"outline"}
+							size={"sm"}
+							className="w-full md:w-auto"
 						>
 							Brand New
-						</button>
-						<button
+						</Button>
+						<Button
+							variant={"outline"}
+							size={"sm"}
 							type="button"
-							className="px-4 py-[10px]  text-black border hover:bg-[#F8F7F7] rounded-lg text-[13px]"
+							className="w-full md:w-auto"
 						>
 							Used
-						</button>
-						<button
-							type="button"
-							className="px-4 py-[10px]  text-black border hover:bg-[#F8F7F7] rounded-lg text-[13px]"
-						>
-							Car Type
-						</button>
+						</Button>
+
+						<Select>
+							<SelectTrigger className="w-full md:w-[180px]">
+								<SelectValue placeholder="Select a Brand" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value="toyota" className="text-[13px]">
+										Toyota
+									</SelectItem>
+									<SelectItem value="lexus" className="text-[13px]">
+										Lexus
+									</SelectItem>
+									<SelectItem value="dodge" className="text-[13px]">
+										Dodge
+									</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
 					</div>
 				</div>
 			</section>
 
-			<section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-12">
+			<section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-12  pt-5 overflow-hidden">
 				{cars.map((car) => (
-					<div key={car.name} className="border p-4 rounded-[24px]">
+					<Link
+						href={`/showroom/${car.id}`}
+						key={car.name}
+						className="border p-4 rounded-[24px]"
+					>
 						<Image
 							src={car.image}
 							alt={car.name}
@@ -186,10 +227,10 @@ const ShowRoom = () => {
 								type="button"
 								className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
 							>
-								Inspect
+								Show Details
 							</button>
 						</div>
-					</div>
+					</Link>
 				))}
 			</section>
 		</main>
