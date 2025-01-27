@@ -65,7 +65,7 @@ const Home = () => {
           />
           <div className="flex items-center justify-end mr-24 gap-x-12">
             {carLogos.map((logo)=>(
-              <Image src={logo.src} alt={logo.alt} height={20} width={141.34} className="h-5 w-fit"/>
+              <Image src={logo.src} alt={logo.alt} height={20} width={141.34} className="h-5 w-fit" key={logo.alt}/>
             ))}
           </div>
         </div>
