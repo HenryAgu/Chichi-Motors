@@ -14,7 +14,7 @@ const carLogos: CarLogos[] = [
   },
   {
     src: "/images/Toyota_EU 1.png",
-    alt: "kia",
+    alt: "toyota",
   },
   {
     src: "/images/layer1.png",
