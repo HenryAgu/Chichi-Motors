@@ -69,6 +69,7 @@ export default {
         marquee: "marquee 30s linear infinite",
         slideDown: "slideDown 0.5s ease-out",
         slideUp: "slideUp 0.5s ease-out",
+        'up-down': 'upDown 2s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -82,6 +83,10 @@ export default {
         slideUp: {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(-100%)" },
+        },
+        upDown: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
       },
     },

@@ -16,7 +16,11 @@ export const metadata: Metadata = {
 };
 
 const OurCompany = () => {
-  return <main className="min-h-screen">OurCompany</main>;
+  return (
+    <main className="min-h-screen flex py-32">
+
+    </main>
+  );
 };
 
 export default OurCompany;

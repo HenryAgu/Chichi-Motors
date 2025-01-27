@@ -55,7 +55,7 @@ const Home = () => {
             alt="car"
             width={720}
             height={480}
-            className="md:h-[480px] md:w-[720px] h-[254px] w-full"
+            className="md:h-[480px] md:w-[720px] h-[254px] w-full animate-up-down"
           />
           <div className="flex flex-wrap gap-6 items-center justify-center md:justify-end md:mr-28 md:gap-x-12 mt-12 w-full">
             <Image
