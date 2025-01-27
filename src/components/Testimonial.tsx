@@ -6,28 +6,27 @@ interface Testimonials {
 }
 
 const testimonial: Testimonials[] = [
-    {
-      content:
-        "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-      author: "Henry Agu Chukwuma",
-    },
-    {
-      content:
-        "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-      author: "Kalu Daniel Obinna",
-    },
-    {
-      content:
-        "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-      author: "Joel Okpara",
-    },
-    {
-      content:
-        "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-      author: "Leonard Ijeoma",
-    },
-  ];
-  
+  {
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+    author: "Henry Agu Chukwuma",
+  },
+  {
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+    author: "Kalu Daniel Obinna",
+  },
+  {
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+    author: "Joel Okpara",
+  },
+  {
+    content:
+      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+    author: "Leonard Ijeoma",
+  },
+];
 
 const Testimonial = () => {
   return (
@@ -48,13 +47,13 @@ const Testimonial = () => {
             key={item.author}
           >
             <span className="text-5xl text-brand-green-100 font-medium pb-[-50px]">
-              "
+              &quot;
             </span>
             <p className="max-w-[321px] text-black text-base font-normal">
               {item.content}
             </p>
             <span className="text-5xl text-brand-green-100 font-medium flex justify-end">
-              "
+              &quot;
             </span>
             <span className=" text-[#969696] font-semibold text-[13px] mt-[-30px]">
               {item.author}

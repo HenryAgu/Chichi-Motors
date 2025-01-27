@@ -23,10 +23,6 @@ const navigation: Navigation[] = [
     title: "Our company",
     path: "/our-company",
   },
-  {
-    title: "Contact Us",
-    path: "/contact",
-  },
 ];
 
 const socials: Socials[] = [
@@ -154,6 +150,7 @@ const Navbar = () => {
                 ))}
               </div>
             </div>
+            <span className="text-center text-[#969696] text-[13px] mb-5">© ALL RIGHTS RESERVED, CHICHI MOTORS 2025</span>
           </div>
         )}
       </div>
