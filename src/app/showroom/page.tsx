@@ -181,7 +181,7 @@ const ShowRoom = () => {
         </div>
       </section>
 
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28  pt-5 overflow-hidden">
+      <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28  pt-5 overflow-hidden">
         {cars.map((car) => (
           <div key={car.name} className="border p-4 rounded-[24px]">
             <Image

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const OurCompany = () => {
   return (
-    <main className="min-h-screen py-32 md:pl-32 px-5">
+    <main className="min-h-screen py-32 lg:pl-32 px-5">
       <h3 className="text-black text-2xl md:text-[32px] tracking-tighter font-normal">
         Our Company
       </h3>

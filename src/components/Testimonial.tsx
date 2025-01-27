@@ -30,7 +30,7 @@ const testimonial: Testimonials[] = [
 
 const Testimonial = () => {
   return (
-    <section className="md:mx-32 mx-5 my-24 md:min-h-screen min-h-fit">
+    <section className="lg:mx-32 md:mx-20 mx-5 my-24 lg:min-h-screen min-h-fit">
       <div className="flex flex-col gap-y-2">
         <h5 className="text-[32px] leading-10 md:text-[42px] font-normal tracking-tighter text-black">
           Hear from our Customers
