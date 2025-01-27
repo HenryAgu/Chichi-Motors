@@ -7,25 +7,24 @@ import Footer from "@/components/shared/Footer";
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
-})
-
+});
 
 export const metadata: Metadata = {
-  title: 'Affordable New & Used Vehicles | Chichi Motors',
-  description: 'Explore affordable vehicles, both used and brand new, in excellent condition with Chichi Motors. Browse our collection, book a meeting, and find your perfect car today.',
+  title: "Affordable New & Used Vehicles | Chichi Motors",
+  description:
+    "Explore affordable vehicles, both used and brand new, in excellent condition with Chichi Motors. Browse our collection, book a meeting, and find your perfect car today.",
   keywords: [
-    'Chichi Motors',
-    'affordable vehicles',
-    'used cars',
-    'new cars',
-    'excellent condition vehicles',
-    'car showroom',
-    'buy a car',
-    'vehicle inspection',
-    'car dealers',
+    "Chichi Motors",
+    "affordable vehicles",
+    "used cars",
+    "new cars",
+    "excellent condition vehicles",
+    "car showroom",
+    "buy a car",
+    "vehicle inspection",
+    "car dealers",
   ],
-}
-
+};
 
 export default function RootLayout({
   children,
@@ -34,12 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${openSans.className} container mx-auto antialiased bg-white`}
-      >
-        <Navbar/>
-        {children}
-        <Footer/>
+      <body className={`${openSans.className} antialiased bg-white`}>
+        <Navbar />
+        <div className="container mx-auto">{children}</div>
+        <Footer />
       </body>
     </html>
   );

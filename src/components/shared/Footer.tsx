@@ -45,7 +45,7 @@ const socials: Socials[] = [
 const Footer = () => {
   return (
     <footer className="bg-brand-green-100 rounded-tl-lg rounded-tr-lg">
-      <div className="md:px-[50px] px-5 flex md:flex-row flex-col">
+      <div className="md:px-[50px] px-5 flex md:flex-row flex-col container mx-auto">
         <div className="basis-[40%] md:border-r flex flex-col border-brand-green-200 pt-16 md:pb-[32px]">
           <div className="md:border-b border-brand-green-200 md:pb-2">
             <Image

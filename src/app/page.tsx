@@ -89,7 +89,7 @@ const Home = () => {
             height={480}
             className="md:h-[480px] md:w-[720px] h-[254px] w-full"
           />
-          <div className="flex flex-wrap gap-6 items-center justify-center md:justify-end md:mr-24 md:gap-x-12 mt-12 w-full">
+          <div className="flex flex-wrap gap-6 items-center justify-center md:justify-end md:mr-28 md:gap-x-12 mt-12 w-full">
             {carLogos.map((logo) => (
               <Image
                 src={logo.src}

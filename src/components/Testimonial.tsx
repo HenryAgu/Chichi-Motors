@@ -30,7 +30,7 @@ const testimonial: Testimonials[] = [
 
 const Testimonial = () => {
   return (
-    <section className="md:mx-32 mx-5 my-24">
+    <section className="md:mx-32 mx-5 my-24 md:min-h-screen min-h-fit">
       <div className="flex flex-col gap-y-2">
         <h5 className="text-[32px] leading-10 md:text-[42px] font-normal tracking-tighter text-black">
           Hear from our Customers
@@ -46,13 +46,13 @@ const Testimonial = () => {
             className="border border-[#E1E1E1] flex flex-col shrink-0 px-5 py-10 rounded-lg"
             key={item.author}
           >
-            <span className="text-5xl text-brand-green-100 font-medium pb-[-50px]">
+            <span className="text-5xl text-brand-green-100 font-medium relative top-5 italic">
               &quot;
             </span>
             <p className="max-w-[321px] text-black text-sm md:text-base font-normal">
               {item.content}
             </p>
-            <span className="text-5xl text-brand-green-100 font-medium flex justify-end">
+            <span className="text-5xl text-brand-green-100 font-medium flex justify-end italic">
               &quot;
             </span>
             <span className=" text-[#969696] font-semibold text-[13px] mt-[-30px]">
