@@ -10,6 +10,12 @@ interface Navigation {
   path: string;
 }
 
+interface Socials {
+  id: string;
+  path: string;
+  image: string;
+}
+
 const navigation: Navigation[] = [
   {
     title: "showroom",
@@ -18,6 +24,28 @@ const navigation: Navigation[] = [
   {
     title: "Our company",
     path: "/our-company",
+  },
+  {
+    title: "Contact Us",
+    path: "/contact",
+  },
+];
+
+const socials: Socials[] = [
+  {
+    id: crypto.randomUUID(),
+    image: "/images/facebook.svg",
+    path: "",
+  },
+  {
+    id: crypto.randomUUID(),
+    image: "/images/instagram.svg",
+    path: "",
+  },
+  {
+    id: crypto.randomUUID(),
+    image: "/images/whatsapp.svg",
+    path: "",
   },
 ];
 
@@ -65,54 +93,68 @@ const Navbar = () => {
             Contact Us
           </Link>
           <div className="flex md:hidden">
-            <button onClick={() => setIsMenuOpen(true)}>
-              <AiOutlineMenu className="text-3xl" />
-            </button>
+            {isMenuOpen ? (
+              <button onClick={handleClose}>
+                <Image
+                  src="/images/close.svg"
+                  alt="menu"
+                  width={32}
+                  height={32}
+                  className="h-[32px] w-[32px]"
+                />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="font-aeonikRegular h-fit w-fit"
+                onClick={() => setIsMenuOpen(true)}
+              >
+                <Image
+                  src="/images/menu.svg"
+                  alt="menu"
+                  width={32}
+                  height={32}
+                  className="h-[32px] w-[32px]"
+                />
+              </button>
+            )}
           </div>
         </div>
         {isMenuOpen && (
           <div
-            className={`flex flex-col justify-between bg-brand-green-200 rounded-bl-lg rounded-br-lg text-white absolute top-[-10px] h-screen py-8 w-full right-0 animate-slideDown ${
+            className={`flex flex-col justify-around bg-[#FBFBFB] rounded-bl-lg rounded-br-lg text-white absolute top-[80px] h-screen py-8 w-full right-0 animate-slideDown ${
               isExiting ? "animate-slideUp" : "animate-slideDown"
             }`}
           >
-            <div className="flex items-end justify-end px-5">
-              <button
-                type="button"
-                className="font-aeonikRegular h-fit w-fit"
-                onClick={handleClose}
-              >
-                <RiCloseLargeLine className="text-3xl" />
-              </button>
-            </div>
-            <div className="mx-5 flex flex-col gap-y-10">
+            <div className="mx-5 flex flex-col items-center gap-y-8">
               {navigation.map((item) => (
                 <Link
                   href={item.path}
                   key={item.title}
-                  className="capitalize text-4xl font-bold hover:font-semibold transition-all duration-200 ease-linear text-white"
+                  className="capitalize text-[32px] font-normal hover:font-semibold transition-all duration-200 ease-linear text-brand-green-100 border-b border-[#E1E1E1] pb-2"
                   onClick={handleClose}
                 >
                   {item.title}
                 </Link>
               ))}
             </div>
-            <div className="mx-5">
-              <Link
-                href="/contact"
-                className="flex items-center gap-x-1 md:gap-x-2"
-              >
-                <span className="text-[32px] md:text-[42px] font-bold text-white underline">
-                  Get a Quote Today
-                </span>
-                <Image
-                  src="/images/arrow.svg"
-                  alt="icon"
-                  width={27}
-                  height={27}
-                  className="md:h-[27px] md:w-[27px] h-6 w-6"
-                />
-              </Link>
+            <div className="flex flex-col items-center gap-y-3 mt-5 md:mt-0">
+              <p className="font-normal text-2xl md:text-[32px] tracking-tighter text-brand-green-100">
+                Follow our Socials
+              </p>
+              <div className="flex items-center gap-x-3 md:gap-x-6">
+                {socials.map((item) => (
+                  <Link href={item.path} key={item.id}>
+                    <Image
+                      src={item.image}
+                      alt="icon"
+                      width={32}
+                      height={32}
+                      className="aspect-square md:h-[32px] md:w-[32px] h-6 w-6"
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         )}
