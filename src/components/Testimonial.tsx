@@ -49,13 +49,13 @@ const Testimonial = () => {
             <span className="text-5xl text-brand-green-100 font-medium relative top-5 italic">
               &quot;
             </span>
-            <p className="max-w-[321px] text-black text-sm md:text-base font-normal">
+            <p className="max-w-[321px] text-black text-sm md:text-base font-normal ml-5">
               {item.content}
             </p>
-            <span className="text-5xl text-brand-green-100 font-medium flex justify-end italic">
+            <span className="text-5xl text-brand-green-100 font-medium flex justify-end italic mr-5">
               &quot;
             </span>
-            <span className=" text-[#969696] font-semibold text-[13px] mt-[-30px]">
+            <span className=" text-[#969696] font-semibold text-[13px] mt-[-30px]  ml-5">
               {item.author}
             </span>
           </div>

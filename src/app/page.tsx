@@ -5,42 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface CarLogos {
-  src: string;
-  alt: string;
-}
-
 interface WhyUs {
   header: string;
   content: string;
 }
-
-const carLogos: CarLogos[] = [
-  {
-    src: "/images/KIA_logo3.png",
-    alt: "kia",
-  },
-  {
-    src: "/images/Toyota_EU 1.png",
-    alt: "toyota",
-  },
-  {
-    src: "/images/layer1.png",
-    alt: "lexus",
-  },
-  {
-    src: "/images/Mercedes-Benz_free_logo.png",
-    alt: "Mercedes Benz",
-  },
-  {
-    src: "/images/Audi-Logo_2016.png",
-    alt: "Audi",
-  },
-  {
-    src: "/images/Group.png",
-    alt: "Honda",
-  },
-];
 
 const whyUs: WhyUs[] = [
   {
@@ -62,7 +30,7 @@ const whyUs: WhyUs[] = [
 
 const Home = () => {
   return (
-    <main className="min-h-screen pt-28 md:pt-32 bg-white text-black">
+    <main className="min-h-screen pt-28 md:pt-24 bg-white text-black">
       <section className="flex flex-col md:flex-row items-center gap-y-[42px]  px-5 md:px-[50px]">
         <div className="basis-[40%] md:ml-20 flex flex-col gap-y-6">
           <h1 className="text-black text-[32px] md:text-[42px] font-bold tracking-tighter leading-[44px] md:leading-[50px]">
@@ -90,16 +58,48 @@ const Home = () => {
             className="md:h-[480px] md:w-[720px] h-[254px] w-full"
           />
           <div className="flex flex-wrap gap-6 items-center justify-center md:justify-end md:mr-28 md:gap-x-12 mt-12 w-full">
-            {carLogos.map((logo) => (
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                height={20}
-                width={141.34}
-                className="h-5 md:h-fit w-fit"
-                key={logo.alt}
-              />
-            ))}
+            <Image
+              src="/images/KIA_logo3.png"
+              alt="logo"
+              height={20}
+              width={85}
+              className="h-5 w-fit"
+            />
+            <Image
+              src="/images/Toyota_EU 1.png"
+              alt="logo"
+              height={20}
+              width={37}
+              className="h-5 w-fit"
+            />
+            <Image
+              src="/images/layer1.png"
+              alt="logo"
+              height={20}
+              width={141.34}
+              className="h-5 w-fit"
+            />
+            <Image
+              src="/images/Mercedes-Benz_free_logo.png"
+              alt="logo"
+              height={32}
+              width={32}
+              className="h-[32px] w-fit"
+            />
+            <Image
+              src="/images/Audi-Logo_2016.png"
+              alt="logo"
+              height={24}
+              width={70}
+              className="h-6 w-fit"
+            />
+            <Image
+              src="/images/Group.png"
+              alt="logo"
+              height={30}
+              width={48}
+              className="h-[30px] w-fit"
+            />
           </div>
         </div>
       </section>
@@ -122,18 +122,25 @@ const Home = () => {
           </div>
           <div className="basis-[50%] flex flex-col gap-y-10 md:ml-20">
             {whyUs.map((why) => (
-              <div className="flex flex-col max-w-[435px] gap-y-3" key={why.header}>
-                <h5 className="text-brand-green-100 font-normal text-2xl md:text-[32px] tracking-tighter">{why.header}</h5>
-                <p className="text-sm md:text-base text-black tracking-tighter">{why.content}</p>
+              <div
+                className="flex flex-col max-w-[435px] gap-y-3"
+                key={why.header}
+              >
+                <h5 className="text-brand-green-100 font-normal text-2xl md:text-[32px] tracking-tighter">
+                  {why.header}
+                </h5>
+                <p className="text-sm md:text-base text-black tracking-tighter">
+                  {why.content}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
       {/* Get Quote */}
-      <GetQuote/>
+      <GetQuote />
       {/* Testimonial */}
-      <Testimonial/>
+      <Testimonial />
     </main>
   );
 };
