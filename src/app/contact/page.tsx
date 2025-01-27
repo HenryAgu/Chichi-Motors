@@ -98,7 +98,7 @@ const ContactUs = () => {
               How to Reach Us
             </p>
             <div className="flex flex-col gap-y-1.5">
-              <p className="font-normal tracking-tight flex gap-x-1 items-center text-sm md:text-base text-brand-green-100">
+              <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm md:text-base text-brand-green-100">
                 E-mail:
                 <div className="flex items-center gap-x-1">
                   <span className="underline">chichimotors@gmail.com</span>
@@ -110,8 +110,8 @@ const ContactUs = () => {
                     className="md:h-[20px] md:w-[20px] w-2 h-2"
                   />
                 </div>
-              </p>
-              <p className="font-normal tracking-tight flex gap-x-1 items-center text-sm md:text-base text-brand-green-100">
+              </span>
+              <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm md:text-base text-brand-green-100">
                 Tel:
                 <div className="flex items-center gap-x-1">
                   <span className="underline">09029465338</span>
@@ -123,7 +123,7 @@ const ContactUs = () => {
                     className="md:h-[20px] md:w-[20px] w-2 h-2"
                   />
                 </div>
-              </p>
+              </span>
             </div>
           </div>
           <div className="flex flex-col gap-y-3 mt-5 md:mt-0">
