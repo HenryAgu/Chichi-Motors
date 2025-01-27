@@ -62,15 +62,15 @@ const whyUs: WhyUs[] = [
 
 const Home = () => {
   return (
-    <main className="min-h-screen pt-32 bg-white text-black">
-      <section className="flex items-center  px-5 md:px-[50px]">
-        <div className="basis-[40%] ml-20 flex flex-col gap-y-6">
-          <h1 className="text-black text-[42px] font-bold tracking-tighter leading-[50px]">
+    <main className="min-h-screen pt-28 md:pt-32 bg-white text-black">
+      <section className="flex flex-col md:flex-row items-center gap-y-[42px]  px-5 md:px-[50px]">
+        <div className="basis-[40%] md:ml-20 flex flex-col gap-y-6">
+          <h1 className="text-black text-[32px] md:text-[42px] font-bold tracking-tighter leading-[44px] md:leading-[50px]">
             Get <span className="text-brand-green-100">Affordable</span>{" "}
             Vehicles <br /> Used & Brand New in <br />{" "}
             <span className="text-brand-green-100">Excellent</span> Condition
           </h1>
-          <p className="text-base tracking-tighter font-normal text-black max-w-[380px]">
+          <p className="text-base tracking-tighter font-normal text-black md:max-w-[380px]">
             Browse our collection of vehicles and make your pick, book a meeting
             with us to inspect your desired vehicle.
           </p>
@@ -87,7 +87,7 @@ const Home = () => {
             alt="car"
             width={720}
             height={480}
-            className="h-[480px] w-[720px]"
+            className="md:h-[480px] md:w-[720px] h-[254px] w-full"
           />
           <div className="flex items-center justify-end mr-24 gap-x-12">
             {carLogos.map((logo) => (
