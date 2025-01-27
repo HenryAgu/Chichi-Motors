@@ -1,4 +1,5 @@
 import GetQuote from "@/components/shared/GetQuote";
+import Testimonial from "@/components/Testimonial";
 import TopSeller from "@/components/TopSeller";
 import Image from "next/image";
 import Link from "next/link";
@@ -131,6 +132,8 @@ const Home = () => {
       </section>
       {/* Get Quote */}
       <GetQuote/>
+      {/* Testimonial */}
+      <Testimonial/>
     </main>
   );
 };
