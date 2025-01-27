@@ -1,4 +1,5 @@
 "use client";
+import GetQuote from "@/components/shared/GetQuote";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -56,6 +57,8 @@ export default function Page() {
 					className="lg:basis-1/2 md:basis-[45%] "
 				/>
 			</section>
+
+			<GetQuote />
 		</main>
 	);
 }
