@@ -60,7 +60,7 @@ const Navbar = () => {
         <div className="flex items-center gap-x-6">
           <Link
             href="/contact"
-            className="bg-brand-green-100 py-2.5 px-6 text-sm font-semibold text-white rounded-lg"
+            className="bg-brand-green-100 transition-colors duration-200 ease-in-out hover:bg-black py-2.5 px-6 text-sm font-semibold text-white rounded-lg"
           >
             Contact Us
           </Link>
