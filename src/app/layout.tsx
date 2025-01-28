@@ -3,6 +3,8 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import QueryClientProviderWrapper from "@/components/querywrapper";
+
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -34,8 +36,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.className} antialiased bg-white`}>
+        				<QueryClientProviderWrapper>
+        <Navbar/>
         <div className="container mx-auto">{children}</div>
-        <Footer />
+          <Footer />
+          				</QueryClientProviderWrapper>
+
       </body>
     </html>
   );
