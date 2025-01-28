@@ -58,7 +58,6 @@ export default function Page() {
           />
         </div>
       </section>
-
       <GetQuote />
     </main>
   );

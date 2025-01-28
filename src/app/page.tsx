@@ -113,11 +113,11 @@ const Home = () => {
         <div className="mt-10 flex flex-col gap-y-12 md:items-center md:flex-row">
           <div className="md:basis-[40%] lg:basis-[50%]">
             <Image
-              src="/images/why-us.png"
+              src="/images/why-us.gif"
               alt="image"
               width={568}
               height={590}
-              className="lg:w-[568px] w-full lg:h-[590px] h-[407px] aspect-[568/590]"
+              className="lg:w-[568px] w-full lg:h-[590px] h-[400px] md:aspect-[568/590]"
             />
           </div>
           <div className="md:basis-[60%] lg:basis-[50%] flex flex-col gap-y-10 md:ml-20">
