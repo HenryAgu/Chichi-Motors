@@ -3,9 +3,23 @@ import GetQuote from "@/components/shared/GetQuote";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
+
+interface ImageArray extends Array<string> {}
+
+const images: ImageArray = [
+  "/images/car.png",
+  "/images/car2.png",
+  "/images/car.png",
+  "/images/car2.png",
+  "/images/car.png",
+  "/images/car.png",
+];
 
 export default function Page() {
   const { id } = useParams<{ id?: string }>();
+  const [selectedImage, setSelectedImage] = useState<string>("/images/car.png");
+
   return (
     <main>
       <section className="flex flex-col-reverse md:flex-row items-center justify-between md:pt-20 pt-[100px] md:pl-5 md:pb-5 pb-10 gap-y-5 gap-x-20">
@@ -22,7 +36,7 @@ export default function Page() {
             </div>
             <div className="flex flex-col gap-y-4">
               <p className="text-sm text-green-700 font-semibold">Used</p>
-              <h2 className="lg:text-4xl md:text-[32px] text-2xl  font-semibold text-black">
+              <h2 className="lg:text-4xl md:text-[32px] text-2xl font-semibold text-black">
                 2015 TOYOTA CAMRY
               </h2>
               <div className="flex gap-x-4">
@@ -48,14 +62,34 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="flex md:basis-[60%] lg:basis-[55%]">
+        <div className="flex flex-col md:basis-[60%] lg:basis-[55%]">
+          {/* Big Image */}
           <Image
-            src={"/images/cardet.png"}
-            alt={"car"}
-            width={750}
-            height={550}
-            className=""
+            src={selectedImage}
+            alt={"Selected car"}
+            width={846}
+            height={520}
+            className="w-[846px] h-[302px] md:h-[520px]"
           />
+          <div className="mt-6 flex justify-center md:justify-start gap-x-2 md:gap-x-6">
+            {images?.map((image, idx) => (
+              <button
+                key={idx}
+                onClick={() => setSelectedImage(image)}
+                className={`${
+                  selectedImage === image ? "opacity-50" : "opacity-100"
+                }`}
+              >
+                <Image
+                  src={image}
+                  alt={`Image ${idx + 1}`}
+                  width={100}
+                  height={100}
+                  className="rounded-lg border md:h-[90px] h-[50px] w-[50px] md:w-[100px] object-cover"
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </section>
       <GetQuote />
