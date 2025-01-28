@@ -59,42 +59,42 @@ const Home = () => {
           />
           <div className="flex flex-wrap gap-6 items-center justify-center lg:justify-end md:mr-28 md:gap-x-12 mt-12 w-full">
             <Image
-              src="/images/KIA_logo3.png"
+              src="/images/kia.svg"
               alt="logo"
               height={20}
               width={85}
               className="h-5 w-fit"
             />
             <Image
-              src="/images/Toyota_EU 1.png"
+              src="/images/Toyota_EU 1.svg"
               alt="logo"
               height={20}
               width={37}
               className="h-5 w-fit"
             />
             <Image
-              src="/images/layer1.png"
+              src="/images/layer1.svg"
               alt="logo"
               height={20}
               width={141.34}
               className="h-5 w-fit"
             />
             <Image
-              src="/images/Mercedes-Benz_free_logo.png"
+              src="/images/Mercedes-Benz_free_logo.svg"
               alt="logo"
               height={32}
               width={32}
               className="h-[32px] w-fit"
             />
             <Image
-              src="/images/Audi-Logo_2016.png"
+              src="/images/Audi-Logo_2016.svg"
               alt="logo"
               height={24}
               width={70}
               className="h-6 w-fit"
             />
             <Image
-              src="/images/Group.png"
+              src="/images/Group.svg"
               alt="logo"
               height={30}
               width={48}
