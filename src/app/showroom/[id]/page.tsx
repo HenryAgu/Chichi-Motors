@@ -20,7 +20,7 @@ export default function Page() {
 
   return (
     <main>
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between md:pt-20 pt-[100px] md:pl-5 md:pb-5 pb-10 gap-y-5 gap-x-20">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between md:pt-20 pt-[100px] md:pl-5 md:pb-5 pb-10 gap-y-5 gap-x-20">
         <div className="flex flex-col gap-y-5 w-full justify-center items-start md:basis-[40%] lg:basis-[45%] basis-full lg:px-[30px] px-5 mt-20">
           <div className="md:mx-auto">
             <div className="inline-flex flex-wrap gap-x-2 items-center text-sm font-semibold text-gray-600 lg:mb-10 md:mb-5 mb-5">
@@ -66,8 +66,8 @@ export default function Page() {
             src={selectedImage}
             alt={"Selected car"}
             width={846}
-            height={520}
-            className="md:w-[846px] h-[302px] md:h-[520px] w-full object-cover"
+            height={500}
+            className="lg:w-[846px] h-[302px] md:h-[500px] w-full object-cover"
           />
           <div className="mt-6 flex justify-center md:justify-start gap-x-2 md:gap-x-6">
             {images?.map((image, idx) => (
@@ -83,7 +83,7 @@ export default function Page() {
                   alt={`Image ${idx + 1}`}
                   width={100}
                   height={100}
-                  className="rounded-lg border md:h-[90px] h-[50px] w-[50px] md:w-[100px] object-cover"
+                  className="rounded-lg border lg:h-[90px] h-[50px] w-[50px] lg:w-[100px] object-cover"
                 />
               </button>
             ))}
