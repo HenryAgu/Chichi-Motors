@@ -20,10 +20,10 @@ export default function Page() {
 
   return (
     <main>
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between md:pt-20 pt-[100px] md:pl-5 md:pb-5 pb-10 gap-y-5 gap-x-20">
-        <div className="flex flex-col gap-y-5 w-full justify-center items-start md:basis-[40%] lg:basis-[45%] basis-full lg:px-[30px] px-5 mt-20">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between md:pt-20 pt-[80px] md:pl-5 md:pb-5 pb-10 gap-y-5 gap-x-20">
+        <div className="flex flex-col gap-y-5 w-full justify-center items-start md:basis-[40%] lg:basis-[45%] basis-full lg:px-[30px] px-0 mt-20">
           <div className="md:mx-auto">
-            <div className="inline-flex flex-wrap gap-x-2 items-center text-sm font-semibold text-gray-600 lg:mb-10 md:mb-5 mb-5">
+            <div className="inline-flex px-5 md:px-0 flex-wrap gap-x-2 items-center text-sm font-semibold text-gray-600 lg:mb-10 md:mb-5 mb-5">
               <Link href={"/showroom"} className="hover:text-green-700">
                 Showroom
               </Link>
@@ -32,7 +32,7 @@ export default function Page() {
               {" > "}
               <span> {id} </span>
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-4 px-5 md:px-0">
               <p className="text-sm text-green-700 font-semibold">Used</p>
               <h2 className="lg:text-4xl md:text-[32px] text-2xl font-semibold text-black">
                 2015 TOYOTA CAMRY
