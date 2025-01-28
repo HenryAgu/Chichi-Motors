@@ -6,17 +6,17 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 
 const images: string[] = [
-  "/images/car.png",
+  "/images/cardet.png",
   "/images/car2.png",
-  "/images/car.png",
+  "/images/image4.png",
   "/images/car2.png",
-  "/images/car.png",
-  "/images/car.png",
+  "/images/cardet.png",
+  "/images/cardet.png",
 ];
 
 export default function Page() {
   const { id } = useParams<{ id?: string }>();
-  const [selectedImage, setSelectedImage] = useState<string>("/images/car.png");
+  const [selectedImage, setSelectedImage] = useState<string>("/images/cardet.png");
 
   return (
     <main>
@@ -67,7 +67,7 @@ export default function Page() {
             alt={"Selected car"}
             width={846}
             height={520}
-            className="w-[846px] h-[302px] md:h-[520px]"
+            className="md:w-[846px] h-[302px] md:h-[520px] w-full object-cover"
           />
           <div className="mt-6 flex justify-center md:justify-start gap-x-2 md:gap-x-6">
             {images?.map((image, idx) => (
