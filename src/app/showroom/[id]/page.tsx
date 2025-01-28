@@ -41,7 +41,7 @@ export default function Page() {
               </p>
               <button
                 type="button"
-                className="px-8 py-3 w-full flex items-center justify-center bg-green-700 rounded-full lg:text-2xl md:text-xl text-base font-bold mt-5 text-white"
+                className="px-8 py-3 w-full flex items-center justify-center bg-green-700 transition-colors duration-200 ease-in-out hover:bg-black hover:text-white rounded-full lg:text-2xl md:text-xl text-base font-bold mt-5 text-white"
               >
                 Inspect
               </button>
