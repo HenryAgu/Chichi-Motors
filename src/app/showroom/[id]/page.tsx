@@ -5,9 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-interface ImageArray extends Array<string> {}
-
-const images: ImageArray = [
+const images: string[] = [
   "/images/car.png",
   "/images/car2.png",
   "/images/car.png",
