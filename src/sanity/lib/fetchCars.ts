@@ -16,6 +16,12 @@ export type CarType = {
     };
     alt?: string; // Optional alternative text for the image
   };
+  images: {
+    asset: {
+      url: string; // URL for the additional car images
+    };
+    alt?: string; // Optional alternative text for the additional images
+  }[];
 };
 
 export const fetchCars = async (): Promise<CarType[]> => {
@@ -27,6 +33,12 @@ export const fetchCars = async (): Promise<CarType[]> => {
     interiorColor,
     exteriorColor,
     image{
+      asset->{
+        url
+      },
+      alt
+    },
+    images[]{
       asset->{
         url
       },
@@ -47,6 +59,12 @@ export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
     interiorColor,
     exteriorColor,
     image{
+      asset->{
+        url
+      },
+      alt
+    },
+    images[]{
       asset->{
         url
       },

@@ -25,7 +25,7 @@ export const carType = defineType({
       name: 'slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
       },
     }),
     defineField({
@@ -50,6 +50,19 @@ export const carType = defineType({
       options: {
         hotspot: true, // Enables cropping and focal point selection
       },
+    }),
+    defineField({
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true, // Enable hotspot for image cropping
+          },
+        },
+      ],
     }),
 
   ],

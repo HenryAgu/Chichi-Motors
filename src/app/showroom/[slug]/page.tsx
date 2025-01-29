@@ -6,6 +6,7 @@ import { fetchCarBySlug } from "@/sanity/lib/fetchCars";
 import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "@/components/spinner";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function CarPage() {
 	const pathname = usePathname();
@@ -18,8 +19,16 @@ export default function CarPage() {
 	} = useQuery({
 		queryKey: ["cars", slug],
 		queryFn: () => fetchCarBySlug(slug as string),
-		enabled: !!slug, // Ensure the query runs only if slug exists
+		enabled: !!slug, 
 	});
+
+	const [selectedImage, setSelectedImage] = useState<string | null>(
+		car?.images?.[0]?.asset?.url ?? null
+	);
+
+	if (car?.images?.[0]?.asset?.url && !selectedImage) {
+		setSelectedImage(car.images[0].asset.url);
+	}
 
 	if (isLoading) {
 		return (
@@ -33,29 +42,12 @@ export default function CarPage() {
 		return (
 			<div className="flex justify-center items-center min-h-screen">
 				<div className="text-center">
-					<p className="text-xl font-semibold text-red-500">
-						Error loading car page
-					</p>
+					<p className="text-xl font-semibold text-red-500">Error loading car page</p>
 					<p className="text-base text-gray-500">Please try again later.</p>
 				</div>
 			</div>
 		);
 	}
-
-	// if (!car) {
-	// 	return (
-	// 		<div className="flex justify-center items-center min-h-screen">
-	// 			<div className="text-center">
-	// 				<p className="text-xl font-semibold text-gray-700">
-	// 					Car not found
-	// 				</p>
-	// 				<p className="text-base text-gray-500">
-	// 					Please check the URL or try again later.
-	// 				</p>
-	// 			</div>
-	// 		</div>
-	// 	);
-	// }
 
 	return (
 		<main>
@@ -63,10 +55,7 @@ export default function CarPage() {
 				<div className="flex flex-col gap-y-5 w-full justify-center items-start md:basis-[40%] lg:basis-[45%] basis-full px-[30px] md:px-0">
 					<div className="md:mx-auto">
 						<div className="inline-flex gap-x-2 items-center text-sm font-semibold text-gray-600 lg:mb-10 md:mb-5 mb-5">
-							<Link href={"/showroom"} className="hover:text-green-700">
-								Showroom
-							</Link>
-							{" > "}
+							<Link href={"/showroom"} className="hover:text-green-700">Showroom</Link> {" > "}
 							<span> {car?.name} </span>
 						</div>
 						<div className="flex flex-col gap-y-4">
@@ -96,14 +85,42 @@ export default function CarPage() {
 						</div>
 					</div>
 				</div>
-				<Image
-		  src={car?.image?.asset?.url || "/path/to/default/image.jpg"}
-					alt={car?.name || "Car image"}
-					width={750}
-					height={550}
-					priority={true}
-					className="lg:basis-1/2 md:basis-[45%]"
-				/>
+
+				<div className="flex flex-col md:basis-[60%] lg:basis-[55%]">
+					{/* Big Image */}
+					{selectedImage && (
+						<Image
+							src={selectedImage}
+							alt={car?.name || "Car image"}
+							width={750}
+							height={550}
+							priority={true}
+							className="lg:basis-1/2 md:basis-[45%]"
+						/>
+					)}
+
+					{/* Thumbnail images */}
+					<div className="mt-6 flex justify-center md:justify-start gap-x-2 md:gap-x-6">
+						{Array.isArray(car?.images) && car?.images.map((image, idx) => (
+							<button
+								key={idx}
+								onClick={() => setSelectedImage(image?.asset?.url)}
+								className={`${
+									selectedImage === image?.asset?.url ? "opacity-50" : "opacity-100"
+								}`}
+							>
+								<Image
+									src={image?.asset?.url}
+									alt={`Image ${idx + 1}`}
+									width={100}
+									height={100}
+									priority={true}
+									className="rounded-lg border md:h-[90px] h-[50px] w-[50px] md:w-[100px] object-cover"
+								/>
+							</button>
+						))}
+					</div>
+				</div>
 			</section>
 
 			<GetQuote />
