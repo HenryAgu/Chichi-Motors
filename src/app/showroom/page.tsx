@@ -1,8 +1,6 @@
 "use client"
 import React from "react";
 import { FiSearch } from "react-icons/fi";
-import { metadata } from "./metadata";
-export { metadata };
 import Image from "next/image";
 import {
   Select,
