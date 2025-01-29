@@ -1,6 +1,6 @@
+"use client"
 import React from "react";
 import { FiSearch } from "react-icons/fi";
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
@@ -13,7 +13,10 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-export const metadata: Metadata = {
+import { useQuery } from "@tanstack/react-query";
+import { fetchCars } from "@/sanity/lib/fetchCars";
+import { Spinner } from "@/components/spinner";
+const metadata: Metadata = {
   title: "Showroom | Chichi Motors",
   description:
     "Discover a wide selection of vehicles in the Chichi Motors showroom. From new to used cars, find your ideal vehicle with ease and book an inspection appointment.",
@@ -27,99 +30,12 @@ export const metadata: Metadata = {
     "vehicle showroom",
   ],
 };
-type Car = {
-  type: "New" | "Used";
-  name: string;
-  price: string;
-  interiorColor: string;
-  exteriorColor: string;
-  image: string;
-  id: string;
+
+
+type CarShowProps = {
+  limit?: number; // Optional limit for the number of cars
 };
 
-const cars: Car[] = [
-  {
-    type: "New",
-    name: "Toyota Camry",
-    price: "4.5M-6M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "Used",
-    name: "Honda Accord",
-    price: "4.5M-6M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "New",
-    name: "Tesla Model 3",
-    price: "4.5M-6M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "Used",
-    name: "Ford Mustang",
-    price: "4.5M-6M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "New",
-    name: "BMW X5",
-    price: "8M-10M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "Used",
-    name: "Audi A4",
-    price: "3M-4M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "New",
-    name: "Mercedes-Benz C-Class",
-    price: "7M-9M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "Used",
-    name: "Chevrolet Camaro",
-    price: "5M-6M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-  {
-    type: "New",
-    name: "Lexus RX",
-    price: "9M-11M",
-    interiorColor: "Blue",
-    exteriorColor: "Black",
-    image: "/images/car.png",
-    id: crypto.randomUUID(),
-  },
-];
 const ShowRoom = () => {
   return (
     <main className="pt-28 px-5 lg:px-[50px]">
@@ -180,57 +96,87 @@ const ShowRoom = () => {
           </div>
         </div>
       </section>
-
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 md:mx-14 mx-0 pt-5 overflow-hidden">
-        {cars.map((car) => (
-          <div key={car.name} className="border p-4 rounded-[24px]">
-            <Image
-              src={car.image}
-              alt={car.name}
-              width={397}
-              height={322}
-              className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
-            />
-            <div className="flex flex-col gap-y-3">
-              <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
-                {car.type}
-              </p>
-              <h2 className="text-base md:text-lg font-bold leading-[24.51px] text-black">
-                {car.name}
-              </h2>
-              <div className="flex gap-x-4">
-                <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                  <span
-                    className="h-[16px] w-[16px] rounded-full"
-                    style={{ backgroundColor: car.exteriorColor }}
-                  />
-                  {car.exteriorColor} Exterior
-                </p>
-                <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                  <span
-                    className="h-[16px] w-[16px] rounded-full"
-                    style={{ backgroundColor: car.interiorColor }}
-                  />
-                  {car.interiorColor} Interior
-                </p>
-              </div>
-
-              <p className="font-bold leading-[32.68px] text-xl md:text-2xl text-brand-green-100">
-                {car.price}
-              </p>
-              <Link
-                href={`/showroom/${car.id}`}
-                type="button"
-                className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 transition-colors duration-300 ease-in-out hover:bg-black hover:text-white rounded-[32px] leading-[32.68px] text-base md:text-lg font-bold mt-5 text-white"
-              >
-                Show Details
-              </Link>
-            </div>
-          </div>
-        ))}
-      </section>
+<CarShow/>
     </main>
   );
 };
 
 export default ShowRoom;
+
+
+
+
+
+
+
+
+export const CarShow = ({ limit }: CarShowProps) => {
+  const {
+    data: cars,
+    isLoading,
+    error,
+  } = useQuery({ queryKey: ["cars"], queryFn: fetchCars });
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner size={30} />
+      </div>
+    );
+
+  if (error) return <div>An error occurred</div>;
+
+  // Limit the cars displayed if `limit` is provided
+  const displayedCars = limit ? cars?.slice(0, limit) : cars;
+
+  return (
+    <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+      {displayedCars?.map((car) => (
+        <div key={car?.slug?.current} className="border p-4 rounded-[24px]">
+          <Image
+            src={car?.image?.asset?.url}
+            alt={car?.name}
+            width={397}
+            height={322}
+            className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
+          />
+          <div className="flex flex-col gap-y-3">
+            <p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
+              {car?.type}
+            </p>
+            <h2 className="text-lg font-bold leading-[24.51px] text-black">
+              {car?.name}
+            </h2>
+            <div className="flex gap-x-4">
+              <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                <span
+                  className="h-[16px] w-[16px] rounded-full"
+                  style={{ backgroundColor: car?.exteriorColor }}
+                />
+                {car?.exteriorColor} Exterior
+              </p>
+              <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                <span
+                  className="h-[16px] w-[16px] rounded-full"
+                  style={{ backgroundColor: car?.interiorColor }}
+                />
+                {car?.interiorColor} Interior
+              </p>
+            </div>
+
+            <p className="font-bold leading-[32.68px] text-2xl text-[#1E8A45]">
+              {car?.price}
+            </p>
+            <Link
+              href={`/showroom/${car?.slug?.current}`}
+              type="button"
+              className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
+            >
+              Show Details
+            </Link>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+};
