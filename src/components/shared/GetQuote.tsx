@@ -13,7 +13,7 @@ const GetQuote = () => {
           globe.
         </span>
         <Link
-          href=""
+							 href="https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle." target="_blank"
           className="bg-white w-fit transition-colors duration-200 ease-in-out hover:bg-black py-2.5 px-6 text-sm font-semibold hover:text-white text-brand-green-100 rounded-lg mt-5 md:mt-10"
         >
           Get a quote

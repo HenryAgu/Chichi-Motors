@@ -66,7 +66,7 @@ const ContactUs = () => {
             </span>
           </div>
           <Link
-            href="/contact"
+            href="tel:+2347063042598"
             className="flex items-center gap-x-1 md:gap-x-2 mt-5"
           >
             <span className="text-2xl lg:text-[32px] font-normal text-brand-green-100">
@@ -100,29 +100,35 @@ const ContactUs = () => {
             <div className="flex flex-col gap-y-1.5">
               <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                 E-mail:
-                <div className="flex items-center gap-x-1">
+                <Link
+                  href="mailto:chichimotors@gmail.com"
+                  className="flex items-center gap-x-1"
+                >
                   <span className="underline">chichimotors@gmail.com</span>
                   <Image
                     src="/images/green-arrow.svg"
                     alt="icon"
                     width={20}
                     height={20}
-                    className="lg:h-[20px] lg:w-[20px] w-2 h-2"
+                    className="lg:h-[15px] lg:w-[15px] w-2 h-2"
                   />
-                </div>
+                </Link>
               </span>
               <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                 Tel:
-                <div className="flex items-center gap-x-1">
+                <Link
+                  href="tel:+2347063042598"
+                  className="flex items-center gap-x-1"
+                >
                   <span className="underline">09029465338</span>
                   <Image
                     src="/images/green-arrow.svg"
                     alt="icon"
                     width={20}
                     height={20}
-                    className="lg:h-[20px] lg:w-[20px] w-2 h-2"
+                    className="lg:h-[15px] lg:w-[15px] w-2 h-2"
                   />
-                </div>
+                </Link>
               </span>
             </div>
           </div>

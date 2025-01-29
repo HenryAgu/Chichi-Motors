@@ -76,12 +76,11 @@ export default function CarPage() {
 							<p className="font-bold lg:text-5xl md:text-4xl text-[42px] text-green-700">
 								{car?.price}
 							</p>
-							<button
-								type="button"
+							<Link href={`https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.name}`} target="_blank"
 								className="px-8 py-3 w-full flex items-center justify-center bg-green-700 rounded-full lg:text-2xl md:text-xl text-2xl font-bold mt-5 text-white"
 							>
 								Inspect
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
