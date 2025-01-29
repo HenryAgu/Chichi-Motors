@@ -38,7 +38,7 @@ type CarShowProps = {
 
 const ShowRoom = () => {
   return (
-    <main className="pt-36 md:px-10 px-[50px]">
+    <main className="pt-28 px-5 lg:px-[50px]">
       <section>
         <p className="text-black text-[32px] leading-[43.58px] font-normal mb-14 ">
           Showroom
