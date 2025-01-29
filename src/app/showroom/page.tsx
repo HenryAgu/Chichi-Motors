@@ -1,7 +1,8 @@
 "use client"
 import React from "react";
 import { FiSearch } from "react-icons/fi";
-import type { Metadata } from "next";
+import { metadata } from "./metadata";
+export { metadata };
 import Image from "next/image";
 import {
   Select,
@@ -16,20 +17,6 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCars } from "@/sanity/lib/fetchCars";
 import { Spinner } from "@/components/spinner";
-const metadata: Metadata = {
-  title: "Showroom | Chichi Motors",
-  description:
-    "Discover a wide selection of vehicles in the Chichi Motors showroom. From new to used cars, find your ideal vehicle with ease and book an inspection appointment.",
-  keywords: [
-    "Chichi Motors showroom",
-    "browse cars",
-    "used vehicles",
-    "new vehicles",
-    "car collection",
-    "affordable cars",
-    "vehicle showroom",
-  ],
-};
 
 
 type CarShowProps = {
