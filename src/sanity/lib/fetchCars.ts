@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 export type CarType = {
   type: string;
   slug: {
-    _type: 'slug';
+    _type: "slug";
     current: string;
   };
   name: string;
@@ -24,8 +24,9 @@ export type CarType = {
   }[];
 };
 
-export const fetchCars = async (): Promise<CarType[]> => {
-  const query = `*[_type == "car"]{
+export const fetchCars = async (type: "All" | "New" | "Used" = "All"): Promise<CarType[]> => {
+  const typeFilter = type !== "All" ? `&& type == "${type}"` : "";
+  const query = `*[_type == "car" ${typeFilter}]{
     type,
     slug,
     name,
@@ -38,7 +39,7 @@ export const fetchCars = async (): Promise<CarType[]> => {
       },
       alt
     },
-    images[]{
+    images[] {
       asset->{
         url
       },
@@ -52,7 +53,7 @@ export const fetchCars = async (): Promise<CarType[]> => {
 
 export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
   const query = `*[_type == "car" && slug.current == $slug][0]{
-   type,
+    type,
     slug,
     name,
     price,
@@ -64,7 +65,7 @@ export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
       },
       alt
     },
-    images[]{
+    images[] {
       asset->{
         url
       },

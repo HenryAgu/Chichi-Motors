@@ -37,6 +37,8 @@ type CarShowProps = {
 };
 
 const ShowRoom = () => {
+  const [filter, setFilter] = React.useState<"All" | "New" | "Used">("All");
+
   return (
     <main className="pt-28 px-5 lg:px-[50px]">
       <section>
@@ -53,24 +55,30 @@ const ShowRoom = () => {
           </div>
           <div className="flex items-center justify-center gap-4 w-full md:w-auto">
             <Button
-              variant={"outline"}
+          variant={filter === "All" ? "default" : "outline"}
               size={"sm"}
               className="w-full md:w-auto"
+            onClick={() => setFilter("All")}
+
             >
               All
             </Button>
             <Button
-              variant={"outline"}
+          variant={filter === "New" ? "default" : "outline"}
               size={"sm"}
               className="w-full md:w-auto"
+                        onClick={() => setFilter("New")}
+
             >
               Brand New
             </Button>
             <Button
-              variant={"outline"}
+          variant={filter === "Used" ? "default" : "outline"}
               size={"sm"}
               type="button"
               className="w-full md:w-auto"
+                        onClick={() => setFilter("Used")}
+
             >
               Used
             </Button>
@@ -96,7 +104,7 @@ const ShowRoom = () => {
           </div>
         </div>
       </section>
-<CarShow/>
+<CarShow filter={filter} />
     </main>
   );
 };
@@ -108,14 +116,16 @@ export default ShowRoom;
 
 
 
+export const CarShow = ({ limit, filter }: CarShowProps & { filter: "All" | "New" | "Used" }) => {
 
-
-export const CarShow = ({ limit }: CarShowProps) => {
   const {
     data: cars,
     isLoading,
     error,
-  } = useQuery({ queryKey: ["cars"], queryFn: fetchCars });
+  } = useQuery({
+    queryKey: ["cars", filter],
+    queryFn: () => fetchCars(filter),
+  });
 
   if (isLoading)
     return (
@@ -130,53 +140,127 @@ export const CarShow = ({ limit }: CarShowProps) => {
   const displayedCars = limit ? cars?.slice(0, limit) : cars;
 
   return (
-    <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
-      {displayedCars?.map((car) => (
-        <div key={car?.slug?.current} className="border p-4 rounded-[24px]">
-          <Image
-            src={car?.image?.asset?.url}
-            alt={car?.name}
-            width={397}
-            height={322}
-            className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
-          />
-          <div className="flex flex-col gap-y-3">
-            <p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
-              {car?.type}
-            </p>
-            <h2 className="text-lg font-bold leading-[24.51px] text-black">
-              {car?.name}
-            </h2>
-            <div className="flex gap-x-4">
-              <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                <span
-                  className="h-[16px] w-[16px] rounded-full"
-                  style={{ backgroundColor: car?.exteriorColor }}
-                />
-                {car?.exteriorColor} Exterior
+    <> 
+  <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+        {displayedCars?.map((car) => (
+          <div key={car?.slug?.current} className="border p-4 rounded-[24px]">
+            <Image
+              src={car?.image?.asset?.url}
+              alt={car?.name}
+              width={397}
+              height={322}
+              className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
+            />
+            <div className="flex flex-col gap-y-3">
+              <p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
+                {car?.type}
               </p>
-              <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                <span
-                  className="h-[16px] w-[16px] rounded-full"
-                  style={{ backgroundColor: car?.interiorColor }}
-                />
-                {car?.interiorColor} Interior
-              </p>
-            </div>
+              <h2 className="text-lg font-bold leading-[24.51px] text-black">
+                {car?.name}
+              </h2>
+              <div className="flex gap-x-4">
+                <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                  <span
+                    className="h-[16px] w-[16px] rounded-full"
+                    style={{ backgroundColor: car?.exteriorColor }}
+                  />
+                  {car?.exteriorColor} Exterior
+                </p>
+                <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                  <span
+                    className="h-[16px] w-[16px] rounded-full"
+                    style={{ backgroundColor: car?.interiorColor }}
+                  />
+                  {car?.interiorColor} Interior
+                </p>
+              </div>
 
-            <p className="font-bold leading-[32.68px] text-2xl text-[#1E8A45]">
-              {car?.price}
-            </p>
-            <Link
-              href={`/showroom/${car?.slug?.current}`}
-              type="button"
-              className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
-            >
-              Show Details
-            </Link>
+              <p className="font-bold leading-[32.68px] text-2xl text-[#1E8A45]">
+                {car?.price}
+              </p>
+              <Link
+                href={`/showroom/${car?.slug?.current}`}
+                type="button"
+                className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
+              >
+                Show Details
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
-    </section>
+        ))}
+      </section>
+    </>
   );
 };
+
+
+// export const CarShow = ({ limit }: CarShowProps) => {
+//   const {
+//     data: cars,
+//     isLoading,
+//     error,
+//   } = useQuery({ queryKey: ["cars"], queryFn: fetchCars });
+
+//   if (isLoading)
+//     return (
+//       <div className="flex justify-center items-center h-screen">
+//         <Spinner size={30} />
+//       </div>
+//     );
+
+//   if (error) return <div>An error occurred</div>;
+
+//   // Limit the cars displayed if `limit` is provided
+//   const displayedCars = limit ? cars?.slice(0, limit) : cars;
+
+//   return (
+//     <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+//       {displayedCars?.map((car) => (
+//         <div key={car?.slug?.current} className="border p-4 rounded-[24px]">
+//           <Image
+//             src={car?.image?.asset?.url}
+//             alt={car?.name}
+//             width={397}
+//             height={322}
+//             className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
+//           />
+//           <div className="flex flex-col gap-y-3">
+//             <p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
+//               {car?.type}
+//             </p>
+//             <h2 className="text-lg font-bold leading-[24.51px] text-black">
+//               {car?.name}
+//             </h2>
+//             <div className="flex gap-x-4">
+//               <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+//                 <span
+//                   className="h-[16px] w-[16px] rounded-full"
+//                   style={{ backgroundColor: car?.exteriorColor }}
+//                 />
+//                 {car?.exteriorColor} Exterior
+//               </p>
+//               <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+//                 <span
+//                   className="h-[16px] w-[16px] rounded-full"
+//                   style={{ backgroundColor: car?.interiorColor }}
+//                 />
+//                 {car?.interiorColor} Interior
+//               </p>
+//             </div>
+
+//             <p className="font-bold leading-[32.68px] text-2xl text-[#1E8A45]">
+//               {car?.price}
+//             </p>
+//             <Link
+//               href={`/showroom/${car?.slug?.current}`}
+//               type="button"
+//               className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
+//             >
+//               Show Details
+//             </Link>
+//           </div>
+//         </div>
+//       ))}
+//     </section>
+//   );
+// };
