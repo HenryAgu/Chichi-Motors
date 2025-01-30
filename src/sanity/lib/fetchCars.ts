@@ -7,6 +7,8 @@ export type CarType = {
     current: string;
   };
   name: string;
+  brand: string;
+  year: string;
   price: string;
   interiorColor: string;
   exteriorColor: string;
@@ -30,6 +32,8 @@ export const fetchCars = async (type: "All" | "New" | "Used" = "All"): Promise<C
     type,
     slug,
     name,
+    brand,
+    year,
     price,
     interiorColor,
     exteriorColor,
@@ -56,6 +60,8 @@ export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
     type,
     slug,
     name,
+    brand,
+    year,
     price,
     interiorColor,
     exteriorColor,

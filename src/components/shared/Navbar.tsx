@@ -88,7 +88,7 @@ const Navbar = () => {
           </Link>
           <div className="flex md:hidden">
             {isMenuOpen ? (
-              <button onClick={handleClose}>
+              <button type="button" onClick={handleClose}>
                 <Image
                   src="/images/close.svg"
                   alt="menu"

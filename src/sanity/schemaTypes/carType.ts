@@ -22,6 +22,16 @@ export const carType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'brand',
+      title: 'Brand',
+      type: 'string',
+    }),
+    defineField({
+      name: 'year',
+      title: 'Year',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {
