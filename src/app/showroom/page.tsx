@@ -126,7 +126,7 @@ export const CarShow = ({ limit }: CarShowProps) => {
             className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
           />
           <div className="flex flex-col gap-y-3">
-            <p className="text-[13px] text-[#1E8A45] font-semibold leading-[17.7px]">
+            <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
               {car?.type}
             </p>
             <h2 className="text-lg font-bold leading-[24.51px] text-black">
@@ -149,13 +149,13 @@ export const CarShow = ({ limit }: CarShowProps) => {
               </p>
             </div>
 
-            <p className="font-bold leading-[32.68px] text-2xl text-[#1E8A45]">
+            <p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
               {car?.price}
             </p>
             <Link
               href={`/showroom/${car?.slug?.current}`}
               type="button"
-              className="px-8 py-3 w-full flex items-center justify-center bg-[#1E8A45] rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
+              className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
             >
               Show Details
             </Link>

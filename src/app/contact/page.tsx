@@ -43,7 +43,7 @@ const socials: Socials[] = [
 const ContactUs = () => {
   return (
     <main className="lg:min-h-screen flex flex-col md:flex-row gap-x-10 py-16 md:py-32 px-5">
-      <div className="basis-[50%] border-b md:border-b-0 md:border-r border-[#E1E1E1] lg:ml-32">
+      <div className="basis-[50%] border-b md:border-b-0 md:border-r border-[#E1E1E1] lg:ml-14 xl:ml-32">
         <div className="my-14 max-w-[444px] flex flex-col gap-y-5">
           <p className="text-brand-green-100 font-normal text-2xl lg:text-[32px] tracking-tight">
             Have any Questions or you need to make Enquiries?
@@ -82,7 +82,7 @@ const ContactUs = () => {
           </Link>
         </div>
       </div>
-      <div className="basis-[50%] lg:ml-32">
+      <div className="basis-[50%] xl:ml-32 lg:ml-14">
         <div className="my-10 md:my-14 flex flex-col gap-y-5 tracking-tighter">
           <div className="flex flex-col gap-y-2">
             <p className="text-[32px] lg:text-[42px] font-bold text-brand-green-100">

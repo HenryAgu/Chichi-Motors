@@ -4,8 +4,8 @@ import React from "react";
 
 const GetQuote = () => {
   return (
-    <section className="my-20 flex flex-col lg:flex-row md:h-[550px]" >
-      <div className="basis-full md:basis-[50%] flex flex-col gap-y-4 md:p-20 lg:p-32 px-[32px] py-20 bg-brand-green-100">
+    <section className="my-20 flex flex-col lg:flex-row lg:h-[550px]" >
+      <div className="basis-full md:basis-[50%] flex flex-col gap-y-4 md:p-20 xl:p-32 px-[32px] py-20 bg-brand-green-100">
         <p className="max-w-[373px] text-[32px] md:text-[42px] text-white font-bold tracking-tighter md:leading-[50px]">Can’t find the right car for you? </p>
         <span className="md:text-base text-sm max-w-[450px] font-normal tracking-tighter leading-[24px] text-white">
           No worries, we also import vehicles at our customers demand and
