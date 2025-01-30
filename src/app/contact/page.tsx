@@ -43,9 +43,9 @@ const socials: Socials[] = [
 const ContactUs = () => {
   return (
     <main className="lg:min-h-screen flex flex-col md:flex-row gap-x-10 py-16 md:py-32 px-5">
-      <div className="basis-[50%] border-b md:border-r border-[#E1E1E1] lg:ml-32">
+      <div className="basis-[50%] border-b md:border-b-0 md:border-r border-[#E1E1E1] lg:ml-14 xl:ml-32">
         <div className="my-14 max-w-[444px] flex flex-col gap-y-5">
-          <p className="text-brand-green-100 font-normal text-2xl lg:text-[32px] tracking-tight">
+          <p className="text-brand-green-100 font-normal text-2xl lg:text-[32px] lg:leading-[43.58px] tracking-tight">
             Have any Questions or you need to make Enquiries?
           </p>
           <div className="flex flex-col gap-y-1.5 md:gap-y-3">
@@ -66,7 +66,7 @@ const ContactUs = () => {
             </span>
           </div>
           <Link
-            href="/contact"
+            href="tel:+2347063042598"
             className="flex items-center gap-x-1 md:gap-x-2 mt-5"
           >
             <span className="text-2xl lg:text-[32px] font-normal text-brand-green-100">
@@ -82,7 +82,7 @@ const ContactUs = () => {
           </Link>
         </div>
       </div>
-      <div className="basis-[50%] lg:ml-32">
+      <div className="basis-[50%] xl:ml-32 lg:ml-14">
         <div className="my-10 md:my-14 flex flex-col gap-y-5 tracking-tighter">
           <div className="flex flex-col gap-y-2">
             <p className="text-[32px] lg:text-[42px] font-bold text-brand-green-100">
@@ -100,29 +100,35 @@ const ContactUs = () => {
             <div className="flex flex-col gap-y-1.5">
               <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                 E-mail:
-                <div className="flex items-center gap-x-1">
+                <Link
+                  href="mailto:chichimotors@gmail.com"
+                  className="flex items-center gap-x-1"
+                >
                   <span className="underline">chichimotors@gmail.com</span>
                   <Image
                     src="/images/green-arrow.svg"
                     alt="icon"
                     width={20}
                     height={20}
-                    className="lg:h-[20px] lg:w-[20px] w-2 h-2"
+                    className="lg:h-[15px] lg:w-[15px] w-2 h-2"
                   />
-                </div>
+                </Link>
               </span>
               <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                 Tel:
-                <div className="flex items-center gap-x-1">
+                <Link
+                  href="tel:+2347063042598"
+                  className="flex items-center gap-x-1"
+                >
                   <span className="underline">09029465338</span>
                   <Image
                     src="/images/green-arrow.svg"
                     alt="icon"
                     width={20}
                     height={20}
-                    className="lg:h-[20px] lg:w-[20px] w-2 h-2"
+                    className="lg:h-[15px] lg:w-[15px] w-2 h-2"
                   />
-                </div>
+                </Link>
               </span>
             </div>
           </div>

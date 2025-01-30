@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <main className="min-h-screen pt-28 lg:pt-24 bg-white text-black">
       <section className="flex flex-col lg:flex-row items-center gap-y-[42px]  px-5 lg:px-[50px]">
-        <div className="md:basis-full lg:basis-[40%] lg:ml-20 flex flex-col gap-y-6">
+        <div className="md:basis-full lg:basis-[40%] xl:ml-20 flex flex-col gap-y-6">
           <h1 className="text-black text-[32px] md:text-[42px] font-bold tracking-tighter leading-[44px] md:leading-[50px]">
             Get <span className="text-brand-green-100">Affordable</span>{" "}
             Vehicles <br /> Used & Brand New in <br />{" "}
@@ -57,7 +57,7 @@ const Home = () => {
             height={480}
             className="md:h-[480px] md:w-[720px] h-[254px] w-full"
           />
-          <div className="flex flex-wrap gap-6 items-center justify-center lg:justify-end md:mr-28 md:gap-x-12 mt-12 w-full">
+          <div className="flex flex-wrap gap-6 items-center justify-center lg:justify-end md:mr-28 lg:gap-x-6 xl:gap-x-12 md:gap-x-12 mt-12 w-full">
             <Image
               src="/images/kia.svg"
               alt="logo"
@@ -106,7 +106,7 @@ const Home = () => {
       {/* Top Seller */}
       <TopSeller />
       {/* Why Buy From Us? */}
-      <section className="mb-32 lg:ml-20  px-5 lg:px-[50px]">
+      <section className="mb-32 xl:ml-20  px-5 lg:px-[50px]">
         <h3 className="text-2xl md:text-[32px] font-normal text-black tracking-tighter">
           Why Buy From Us?
         </h3>

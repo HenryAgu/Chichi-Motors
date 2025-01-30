@@ -55,14 +55,18 @@ const Footer = () => {
               className="lg:h-[50px] lg:w-[50px] h-[40px] w-[40px] mb-2"
               alt="icon"
             />
-            <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">Find our Store</p>
+            <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">
+              Find our Store
+            </p>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
               Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station, Eligbolo
               <br /> Port Harcourt, Rivers State
             </span>
           </div>
           <div className="pt-10 md:pt-14">
-            <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">Contact Us</p>
+            <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">
+              Contact Us
+            </p>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
               E-mail: chichimotors@gmail.com <br />
               Tel: 09029465338
@@ -82,11 +86,21 @@ const Footer = () => {
             ))}
           </div>
           <div className="flex flex-col">
-            <Link href="/contact" className="flex items-center gap-x-1 md:gap-x-2">
+            <Link
+              href="https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle."
+              target="_blank"
+              className="flex items-center gap-x-1 md:gap-x-2"
+            >
               <span className="text-[32px] lg:text-[42px] font-bold text-white underline">
                 Get a Quote Today
               </span>
-              <Image src="/images/arrow.svg" alt="icon" width={27} height={27} className="md:h-[27px] md:w-[27px] h-6 w-6"/>
+              <Image
+                src="/images/arrow.svg"
+                alt="icon"
+                width={27}
+                height={27}
+                className="md:h-[27px] md:w-[27px] h-6 w-6"
+              />
             </Link>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
               Leave us a message on WhatsApp
