@@ -155,7 +155,7 @@ export const CarShow = ({ limit }: CarShowProps) => {
             <Link
               href={`/showroom/${car?.slug?.current}`}
               type="button"
-              className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] leading-[32.68px] text-2xl font-bold mt-5 text-white"
+              className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] leading-[32.68px] md:text-xl text-lg  font-bold mt-5 text-white"
             >
               Show Details
             </Link>
