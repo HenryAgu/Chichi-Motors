@@ -16,6 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCars, fetchCarBrands } from "@/sanity/lib/fetchCars";
 import { Spinner } from "@/components/spinner";
 import { FaRegFaceSadTear } from "react-icons/fa6";
+import Navbar from "@/components/shared/Navbar";
 
 
 type CarShowProps = {
@@ -41,6 +42,7 @@ const ShowRoom = () => {
 
 	return (
 		<>
+		<Navbar/>
 		<main className="pt-28 px-5 lg:px-[50px]">
 			<section>
 				<p className="text-black text-[32px] leading-[43.58px] font-normal mb-14">
