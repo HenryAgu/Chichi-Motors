@@ -117,7 +117,7 @@ export default function CarPage() {
                 width={750}
                 height={550}
                 priority={true}
-                className="lg:basis-1/2 md:basis-[45%]"
+                className="lg:basis-1/2 md:basis-[45%] w-full h-[302px] object-cover md:object-none lg:h-[520px]"
               />
             )}
 

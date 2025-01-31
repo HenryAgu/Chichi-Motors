@@ -49,7 +49,7 @@ const ShowRoom = () => {
             Showroom
           </p>
           <div className="flex items-center justify-start gap-10 flex-col md:flex-row">
-            <div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5 w-[400px]">
+            <div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5 w-full md:w-[400px]">
               <input
                 placeholder="Search by Name, Brand, or Colour"
                 className="w-full text-garage-gray-650 text-sm focus:ring-transparent focus:outline-none"
@@ -59,11 +59,11 @@ const ShowRoom = () => {
               <FiSearch className="text-garage-gray-650 w-[15.24px] h-[15.24px]" />
             </div>
 
-            <div className="flex items-center justify-center gap-4 w-full md:w-auto">
+            <div className="flex flex-wrap md:flex-nowrap items-start md:items-center justify-start md:justify-center gap-4 w-full md:w-auto">
               <Button
                 variant={filter === "All" ? "default" : "outline"}
                 size="sm"
-                className="w-full md:w-auto"
+                className="w-fit md:w-auto"
                 onClick={() => setFilter("All")}
               >
                 All
@@ -71,7 +71,7 @@ const ShowRoom = () => {
               <Button
                 variant={filter === "New" ? "default" : "outline"}
                 size="sm"
-                className="w-full md:w-auto"
+                className="w-fit md:w-auto"
                 onClick={() => setFilter("New")}
               >
                 Brand New
@@ -79,7 +79,7 @@ const ShowRoom = () => {
               <Button
                 variant={filter === "Used" ? "default" : "outline"}
                 size="sm"
-                className="w-full md:w-auto"
+                className="w-fit md:w-auto"
                 onClick={() => setFilter("Used")}
               >
                 Used
@@ -89,7 +89,7 @@ const ShowRoom = () => {
                   setSelectedBrand(value === "All" ? null : value);
                 }}
               >
-                <SelectTrigger className="w-full md:w-[180px]">
+                <SelectTrigger className="w-fit md:w-[180px]">
                   <SelectValue placeholder="Select a Brand" />
                 </SelectTrigger>
 
@@ -187,7 +187,7 @@ export function CarShow({
   return (
     <>
       {displayedCars?.length === 0 ? (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-[60vh] md:h-screen">
           <FcCancel className="text-6xl lg:text-9xl" />
           <p className="md:text-lg text-sm font-normal text-brand-green-100 text-center">
             Car not available. <br/> Order via WhatsApp:
