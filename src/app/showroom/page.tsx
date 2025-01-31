@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCars } from "@/sanity/lib/fetchCars";
 import { Spinner } from "@/components/spinner";
+import { FaRegFaceSadTear } from "react-icons/fa6";
 
 
 type CarShowProps = {
@@ -109,13 +110,17 @@ export const CarShow = ({ limit }: CarShowProps) => {
       </div>
     );
 
-  if (error) return <div>An error occurred</div>;
+  if (error) return <div className="h-[60vh] flex items-center justify-center">
+    <FaRegFaceSadTear />
+    <span>An error occurred</span>
+  </div>;
+
 
   // Limit the cars displayed if `limit` is provided
   const displayedCars = limit ? cars?.slice(0, limit) : cars;
 
   return (
-    <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+    <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
       {displayedCars?.map((car) => (
         <div key={car?.slug?.current} className="border p-4 rounded-[24px]">
           <Image
@@ -123,7 +128,7 @@ export const CarShow = ({ limit }: CarShowProps) => {
             alt={car?.name}
             width={397}
             height={322}
-            className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
+            className="mb-4 rounded-[8px] w-full h-[240px] lg:h-[322px]"
           />
           <div className="flex flex-col gap-y-3">
             <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
