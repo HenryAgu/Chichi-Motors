@@ -14,21 +14,30 @@ export type CarType = {
   exteriorColor: string;
   image: {
     asset: {
-      url: string; // URL for the car image
+      url: string;
     };
-    alt?: string; // Optional alternative text for the image
+    alt?: string;
   };
   images: {
     asset: {
-      url: string; // URL for the additional car images
+      url: string;
     };
-    alt?: string; // Optional alternative text for the additional images
+    alt?: string;
   }[];
 };
 
-export const fetchCars = async (type: "All" | "New" | "Used" = "All"): Promise<CarType[]> => {
-  const typeFilter = type !== "All" ? `&& type == "${type}"` : "";
-  const query = `*[_type == "car" ${typeFilter}]{
+export const fetchCars = async (
+  filter: "All" | "New" | "Used",
+  searchQuery: string,
+  selectedBrand: string | null
+): Promise<CarType[]> => {
+  const typeFilter = filter !== "All" ? `&& type == "${filter}"` : "";
+  const brandFilter = selectedBrand ? `&& brand == "${selectedBrand}"` : "";
+  const searchFilter = searchQuery
+    ? `&& (brand match "*${searchQuery}*" || name match "*${searchQuery}*" || exteriorColor match "*${searchQuery}*" || year match "*${searchQuery}*")`
+    : "";
+
+  const query = `*[_type == "car" ${typeFilter} ${brandFilter} ${searchFilter}]{
     type,
     slug,
     name,
@@ -51,8 +60,21 @@ export const fetchCars = async (type: "All" | "New" | "Used" = "All"): Promise<C
     }
   }`;
 
-  const cars: CarType[] = await client.fetch(query);
-  return cars;
+  return await client.fetch(query);
+};
+
+
+
+
+export const fetchCarBrands = async (): Promise<string[]> => {
+  const query = `*[_type == "car"] | order(brand asc) {
+    brand
+  }`;
+
+  const cars: { brand: string }[] = await client.fetch(query);
+  const uniqueBrands = [...new Set(cars.map(car => car.brand))];
+
+  return uniqueBrands;
 };
 
 export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {

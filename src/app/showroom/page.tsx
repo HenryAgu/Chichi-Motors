@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
 import {
@@ -13,34 +13,51 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCars } from "@/sanity/lib/fetchCars";
+import { fetchCars, fetchCarBrands } from "@/sanity/lib/fetchCars";
 import { Spinner } from "@/components/spinner";
 
 type CarShowProps = {
-	limit?: number; // Optional limit for the number of cars
+	limit?: number;
 };
 
 const ShowRoom = () => {
-	const [filter, setFilter] = React.useState<"All" | "New" | "Used">("All");
+	const [filter, setFilter] = useState<"All" | "New" | "Used">("All");
+	const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+	const [searchQuery, setSearchQuery] = useState<string>("");
+
+	const { data: carBrands, isLoading: brandsLoading } = useQuery({
+		queryKey: ["carBrands"],
+		queryFn: fetchCarBrands,
+	});
+
+	if (brandsLoading)
+		return (
+			<div className="flex justify-center items-center h-screen">
+				<Spinner size={20} />
+			</div>
+		);
 
 	return (
+		<>
 		<main className="pt-28 px-5 lg:px-[50px]">
 			<section>
-				<p className="text-black text-[32px] leading-[43.58px] font-normal mb-14 ">
+				<p className="text-black text-[32px] leading-[43.58px] font-normal mb-14">
 					Showroom
 				</p>
 				<div className="flex items-center justify-start gap-10 flex-col md:flex-row">
-					<div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5  w-[400px]">
+					<div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5 w-[400px]">
 						<input
-							placeholder="Search by Name, Brand and Colour"
-							className="w-full text-garage-gray-650 text-sm   focus:ring-transparent focus:outline-none "
-						/>
+							placeholder="Search by Name, Brand, or Colour"
+							className="w-full text-garage-gray-650 text-sm focus:ring-transparent focus:outline-none"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)} />
 						<FiSearch className="text-garage-gray-650 w-[15.24px] h-[15.24px]" />
-					</div>
-					<div className="flex items-center justify-center gap-4 w-full md:w-auto">
+				</div>
+
+		    <div className="flex items-center justify-center gap-4 w-full md:w-auto">
 						<Button
 							variant={filter === "All" ? "default" : "outline"}
-							size={"sm"}
+							size="sm"
 							className="w-full md:w-auto"
 							onClick={() => setFilter("All")}
 						>
@@ -48,7 +65,7 @@ const ShowRoom = () => {
 						</Button>
 						<Button
 							variant={filter === "New" ? "default" : "outline"}
-							size={"sm"}
+							size="sm"
 							className="w-full md:w-auto"
 							onClick={() => setFilter("New")}
 						>
@@ -56,66 +73,108 @@ const ShowRoom = () => {
 						</Button>
 						<Button
 							variant={filter === "Used" ? "default" : "outline"}
-							size={"sm"}
-							type="button"
+							size="sm"
 							className="w-full md:w-auto"
 							onClick={() => setFilter("Used")}
 						>
 							Used
 						</Button>
-
-						<Select>
-							<SelectTrigger className="w-full md:w-[180px]">
-								<SelectValue placeholder="Select a Brand" />
-							</SelectTrigger>
-							<SelectContent>
-								<SelectGroup>
-									<SelectItem value="toyota" className="text-[13px]">
-										Toyota
-									</SelectItem>
-									<SelectItem value="lexus" className="text-[13px]">
-										Lexus
-									</SelectItem>
-									<SelectItem value="dodge" className="text-[13px]">
-										Dodge
-									</SelectItem>
-								</SelectGroup>
-							</SelectContent>
-						</Select>
-					</div>
+					<Select
+						onValueChange={(value) => {
+							setSelectedBrand(value === "All" ? null : value);
+						} }
+					>
+						<SelectTrigger className="w-full md:w-[180px]">
+							<SelectValue placeholder="Select a Brand" />
+						</SelectTrigger>
+						
+						<SelectContent>
+							<SelectGroup>
+								<SelectItem value="All" className="text-[13px]">
+									All
+								</SelectItem>
+								{carBrands?.map((brand, index) => (
+							 <SelectItem
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								key={index}
+								value={brand}
+								className="text-[13px]"
+							>
+								{brand}
+							</SelectItem>
+							  ))}
+							</SelectGroup>
+						</SelectContent>
+					</Select>
 				</div>
-			</section>
-			<CarShow filter={filter} />
-		</main>
+			  </div>
+		</section>
+		<CarShow
+				filter={filter}
+				selectedBrand={selectedBrand}
+				searchQuery={searchQuery} />	
+  </main >
+		</>
 	);
 };
 
 export default ShowRoom;
 
-export const CarShow = ({
+
+
+
+export function CarShow({
 	limit,
 	filter,
-}: CarShowProps & { filter: "All" | "New" | "Used" }) => {
+	selectedBrand,
+	searchQuery,
+}: CarShowProps & {
+	filter: "All" | "New" | "Used";
+	selectedBrand: string | null;
+	searchQuery: string;
+}) {
 	const {
 		data: cars,
 		isLoading,
 		error,
 	} = useQuery({
-		queryKey: ["cars", filter],
-		queryFn: () => fetchCars(filter),
+		queryKey: ["cars", filter, selectedBrand, searchQuery],
+		queryFn: () => fetchCars(filter, searchQuery, selectedBrand),
 	});
+
 
 	if (isLoading)
 		return (
 			<div className="flex justify-center items-center h-screen">
-				<Spinner size={30} />
+				<Spinner size={20} />
 			</div>
 		);
 
 	if (error) return <div>An error occurred</div>;
 
-	// Limit the cars displayed if `limit` is provided
-	const displayedCars = limit ? cars?.slice(0, limit) : cars;
+	const filteredCars = cars?.filter((car) => {
+		if (selectedBrand === "All" || !selectedBrand) {
+			return true;
+		}
+
+		if (selectedBrand && car.brand !== selectedBrand) {
+			return false;
+		}
+
+		if (searchQuery) {
+			const lowerCaseQuery = searchQuery.toLowerCase();
+			return (
+				car.name.toLowerCase().includes(lowerCaseQuery) ||
+				car.brand.toLowerCase().includes(lowerCaseQuery) ||
+				car.exteriorColor.toLowerCase().includes(lowerCaseQuery) ||
+				car.interiorColor.toLowerCase().includes(lowerCaseQuery)
+			);
+		}
+
+		return true;
+	});
+
+	const displayedCars = limit ? filteredCars?.slice(0, limit) : filteredCars;
 
 	return (
 		<section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
@@ -159,8 +218,7 @@ export const CarShow = ({
 						</p>
 						<Link
 							href={`/showroom/${car?.slug?.current}`}
-							type="button"
-							className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] leading-[32.68px] md:text-xl text-lg  font-bold mt-5 text-white"
+							className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] leading-[32.68px] md:text-xl text-lg font-bold mt-5 text-white"
 						>
 							Show Details
 						</Link>
