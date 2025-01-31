@@ -154,9 +154,12 @@ export function CarShow({
 
   if (error)
     return (
-      <div className="h-[60vh] flex items-center justify-center">
-        <FaRegFaceSadTear />
-        <span>An error occurred</span>
+      <div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
+        <FaRegFaceSadTear className="text-6xl lg:text-9xl"/>
+		<span className="text-base">An error occurred</span>
+            <span>
+              Go to <Link href="/" className="text-brand-green-100 text-base">Home</Link>
+            </span>
       </div>
     );
 

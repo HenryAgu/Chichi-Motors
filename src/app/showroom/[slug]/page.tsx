@@ -8,6 +8,7 @@ import { Spinner } from "@/components/spinner";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Navbar from "@/components/shared/Navbar";
+import { FaRegFaceSadTear } from "react-icons/fa6";
 
 export default function CarPage() {
   const pathname = usePathname();
@@ -43,10 +44,13 @@ export default function CarPage() {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <p className="text-xl font-semibold text-red-500">
-            Error loading car page
-          </p>
-          <p className="text-base text-gray-500">Please try again later.</p>
+          <div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
+            <FaRegFaceSadTear className="text-6xl lg:text-9xl"/>
+            <span className="text-base">An error occurred</span>
+            <span>
+              Go to <Link href="/" className="text-brand-green-100 text-base">Home</Link>
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -98,7 +102,7 @@ export default function CarPage() {
                   {car?.price}
                 </p>
                 <Link
-                  href={`https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.name}`}
+                  href={`https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.exteriorColor} ${car?.brand} ${car?.name}`}
                   target="_blank"
                   className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-full lg:text-2xl md:text-xl text-base font-bold mt-5 text-white"
                 >
@@ -117,7 +121,7 @@ export default function CarPage() {
                 width={750}
                 height={550}
                 priority={true}
-                className="lg:basis-1/2 md:basis-[45%] w-full h-[302px] object-cover md:object-none lg:h-[520px]"
+                className="lg:basis-1/2 md:basis-[45%] w-full h-[302px] object-cover md:object-none lg:h-[400px]"
               />
             )}
 
