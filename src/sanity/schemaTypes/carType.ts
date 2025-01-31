@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity'
+import {defineArrayMember, defineType, defineField } from 'sanity'
 
 export const carType = defineType({
   name: 'car',
@@ -22,9 +22,9 @@ export const carType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'brand',
-      title: 'Brand',
-      type: 'string',
+      name: "brand",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: { type: "brand" } })],
     }),
     defineField({
       name: 'year',

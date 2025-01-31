@@ -7,7 +7,9 @@ export type CarType = {
     current: string;
   };
   name: string;
-  brand: string;
+  brand: Array<{
+    title: string;
+  }>;
   year: string;
   price: string;
   interiorColor: string;
@@ -32,9 +34,11 @@ export const fetchCars = async (
   selectedBrand: string | null
 ): Promise<CarType[]> => {
   const typeFilter = filter !== "All" ? `&& type == "${filter}"` : "";
-  const brandFilter = selectedBrand ? `&& brand == "${selectedBrand}"` : "";
+  const brandFilter = selectedBrand
+    ? `&& references(*[_type == "brand" && title == "${selectedBrand}"]._id)`
+    : "";
   const searchFilter = searchQuery
-    ? `&& (brand match "*${searchQuery}*" || name match "*${searchQuery}*" || exteriorColor match "*${searchQuery}*" || year match "*${searchQuery}*")`
+    ? `&& (name match "*${searchQuery}*" || exteriorColor match "*${searchQuery}*" || year match "*${searchQuery}*" || brand[]->title match "*${searchQuery}*")`
     : "";
 
   const query = `*[_type == "car" ${typeFilter} ${brandFilter} ${searchFilter}] 
@@ -42,7 +46,9 @@ export const fetchCars = async (
     type,
     slug,
     name,
-    brand,
+    brand[]->{
+      title
+    },  
     year,
     price,
     interiorColor,
@@ -64,19 +70,13 @@ export const fetchCars = async (
   return await client.fetch(query);
 };
 
-
-
-
-
 export const fetchCarBrands = async (): Promise<string[]> => {
-  const query = `*[_type == "car"] | order(brand asc) {
-    brand
+  const query = `*[_type == "brand"] | order(title asc) {
+    title
   }`;
 
-  const cars: { brand: string }[] = await client.fetch(query);
-  const uniqueBrands = [...new Set(cars.map(car => car.brand))];
-
-  return uniqueBrands;
+  const brands: { title: string }[] = await client.fetch(query);
+  return brands.map((brand) => brand.title);
 };
 
 export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
@@ -84,7 +84,9 @@ export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
     type,
     slug,
     name,
-    brand,
+    brand[]->{
+      title
+    },
     year,
     price,
     interiorColor,
