@@ -71,4 +71,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    min-width: 100% !important;
+  }
+
+  
 }

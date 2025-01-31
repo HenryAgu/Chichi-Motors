@@ -55,7 +55,7 @@ const Navbar = () => {
     }, 500);
   };
   return (
-    <section className="shadow-custom fixed top-0 left-0 right-0 z-50 bg-[#FBFBFB]">
+    <section className="shadow-custom fixed top-0 left-0 right-0 z-50 bg-[#FBFBFB] w-screen">
       <div className="flex items-center container mx-auto justify-between py-5 px-5 md:px-[50px]">
         <div className="flex items-center gap-x-12">
           <Link href="/" className="">
@@ -88,7 +88,7 @@ const Navbar = () => {
           </Link>
           <div className="flex md:hidden">
             {isMenuOpen ? (
-              <button onClick={handleClose}>
+              <button type="button" onClick={handleClose}>
                 <Image
                   src="/images/close.svg"
                   alt="menu"
