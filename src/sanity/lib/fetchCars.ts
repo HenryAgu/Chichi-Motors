@@ -37,7 +37,8 @@ export const fetchCars = async (
     ? `&& (brand match "*${searchQuery}*" || name match "*${searchQuery}*" || exteriorColor match "*${searchQuery}*" || year match "*${searchQuery}*")`
     : "";
 
-  const query = `*[_type == "car" ${typeFilter} ${brandFilter} ${searchFilter}]{
+  const query = `*[_type == "car" ${typeFilter} ${brandFilter} ${searchFilter}] 
+    | order(_createdAt desc) { 
     type,
     slug,
     name,
@@ -62,6 +63,7 @@ export const fetchCars = async (
 
   return await client.fetch(query);
 };
+
 
 
 

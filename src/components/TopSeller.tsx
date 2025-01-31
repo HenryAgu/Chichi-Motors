@@ -16,7 +16,7 @@ const TopSeller = () => {
         View all
       </Link>
       </div>
-      <CarShow limit={3}/>
+      <CarShow limit={3} filter={"All"} selectedBrand={null} searchQuery={""}/>
     </section>
   );
 };
