@@ -3,32 +3,46 @@ import { client } from "@/sanity/lib/client";
 export type CarType = {
   type: string;
   slug: {
-    _type: 'slug';
+    _type: "slug";
     current: string;
   };
   name: string;
+  brand: string;
+  year: string;
   price: string;
   interiorColor: string;
   exteriorColor: string;
   image: {
     asset: {
-      url: string; // URL for the car image
+      url: string;
     };
-    alt?: string; // Optional alternative text for the image
+    alt?: string;
   };
   images: {
     asset: {
-      url: string; // URL for the additional car images
+      url: string;
     };
-    alt?: string; // Optional alternative text for the additional images
+    alt?: string;
   }[];
 };
 
-export const fetchCars = async (): Promise<CarType[]> => {
-  const query = `*[_type == "car"]{
+export const fetchCars = async (
+  filter: "All" | "New" | "Used",
+  searchQuery: string,
+  selectedBrand: string | null
+): Promise<CarType[]> => {
+  const typeFilter = filter !== "All" ? `&& type == "${filter}"` : "";
+  const brandFilter = selectedBrand ? `&& brand == "${selectedBrand}"` : "";
+  const searchFilter = searchQuery
+    ? `&& (brand match "*${searchQuery}*" || name match "*${searchQuery}*" || exteriorColor match "*${searchQuery}*" || year match "*${searchQuery}*")`
+    : "";
+
+  const query = `*[_type == "car" ${typeFilter} ${brandFilter} ${searchFilter}]{
     type,
     slug,
     name,
+    brand,
+    year,
     price,
     interiorColor,
     exteriorColor,
@@ -38,7 +52,7 @@ export const fetchCars = async (): Promise<CarType[]> => {
       },
       alt
     },
-    images[]{
+    images[] {
       asset->{
         url
       },
@@ -46,15 +60,30 @@ export const fetchCars = async (): Promise<CarType[]> => {
     }
   }`;
 
-  const cars: CarType[] = await client.fetch(query);
-  return cars;
+  return await client.fetch(query);
+};
+
+
+
+
+export const fetchCarBrands = async (): Promise<string[]> => {
+  const query = `*[_type == "car"] | order(brand asc) {
+    brand
+  }`;
+
+  const cars: { brand: string }[] = await client.fetch(query);
+  const uniqueBrands = [...new Set(cars.map(car => car.brand))];
+
+  return uniqueBrands;
 };
 
 export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
   const query = `*[_type == "car" && slug.current == $slug][0]{
-   type,
+    type,
     slug,
     name,
+    brand,
+    year,
     price,
     interiorColor,
     exteriorColor,
@@ -64,7 +93,7 @@ export const fetchCarBySlug = async (slug: string): Promise<CarType | null> => {
       },
       alt
     },
-    images[]{
+    images[] {
       asset->{
         url
       },
