@@ -189,7 +189,7 @@ export function CarShow({
 					<p className="text-xl font-bold text-brand-green-100">Car not available</p>
 				</div>
 			) : (
-				<section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+				<section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
 					{displayedCars?.map((car) => (
 						<div key={car?.slug?.current} className="border p-4 rounded-[24px]">
 							<Image
@@ -197,7 +197,7 @@ export function CarShow({
 								alt={car?.name}
 								width={397}
 								height={322}
-								className="object-cover mb-4 rounded-[8px] w-full h-[322px]"
+								className=" mb-4 rounded-[8px] w-full h-[240px] lg:h-[322px]"
 							/>
 							<div className="flex flex-col gap-y-3">
 								<div className="flex flex-col gap-y-3">
