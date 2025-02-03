@@ -11,25 +11,25 @@ import Navbar from "@/components/shared/Navbar";
 import { FaRegFaceSadTear } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-interface VehicleInfo {
-  title: string;
-  content: string;
-}
+// interface VehicleInfo {
+//   title: string;
+//   content: string;
+// }
 
-const vehicleInfo: VehicleInfo[] = [
-  { title: "Car Model", content: "Vehicle history" },
-  { title: "Car Model", content: "Vehicle history" },
-  { title: "Manufacture Year", content: "2015" },
-  { title: "Fuel Type", content: "Petrol" },
-  { title: "Drive Type", content: "Vehicle history" },
-  { title: "Car Model", content: "Vehicle history" },
-  { title: "Car Model", content: "Vehicle history" },
-  { title: "Car Model", content: "Vehicle history" },
-];
+// const vehicleInfo: VehicleInfo[] = [
+//   { title: "Car Model", content: "Vehicle history" },
+//   { title: "Car Model", content: "Vehicle history" },
+//   { title: "Manufacture Year", content: "2015" },
+//   { title: "Fuel Type", content: "Petrol" },
+//   { title: "Drive Type", content: "Vehicle history" },
+//   { title: "Car Model", content: "Vehicle history" },
+//   { title: "Car Model", content: "Vehicle history" },
+//   { title: "Car Model", content: "Vehicle history" },
+// ];
 
-const midpoint = Math.ceil(vehicleInfo.length / 2);
-const firstHalf = vehicleInfo.slice(0, midpoint);
-const secondHalf = vehicleInfo.slice(midpoint);
+// const midpoint = Math.ceil(vehicleInfo.length / 2);
+// const firstHalf = vehicleInfo.slice(0, midpoint);
+// const secondHalf = vehicleInfo.slice(midpoint);
 
 export default function CarPage() {
   const pathname = usePathname();
@@ -84,7 +84,9 @@ export default function CarPage() {
       <Navbar />
       <main>
         <section className="flex flex-col-reverse lg:flex-row items-center justify-between md:pt-20 pt-[100px] w-full lg:pl-5 md:pb-5 pb-10 gap-y-5">
-          <div className="flex flex-col gap-y-5 w-full justify-center md:items-start md:basis-[60%] lg:basis-[45%] basis-full px-5 md:px-0">
+          <div
+            className="flex flex-col gap-y-5 w-full justify-center md:items-start md:basis-[60%] lg:basis-[45%] basis-full px-5 md:px-0"
+          >
             <div className="xl:ml-32 mt-10 lg:mt-0 md:ml-10">
               <div className="flex gap-x-2 items-center text-sm font-semibold text-[#969696] lg:mb-10 md:mb-5 mb-5">
                 <Link href={"/showroom"} className="hover:text-green-700">
@@ -133,7 +135,7 @@ export default function CarPage() {
                   {car?.price}
                 </p>
                 <Link
-                  href={`https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.name}`}
+                  href={`https://wa.me/+2348033095721?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.brand?.[0]?.title}%20${car?.name}`}
                   target="_blank"
                   className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-full lg:text-2xl md:text-xl text-base font-bold mt-5 text-white"
                 >
@@ -193,7 +195,7 @@ export default function CarPage() {
             </div>
           </div>
         </section>
-        <div className="my-20 mx-[50px]">
+        {/* <div className="my-20 mx-[50px]">
           <div className="border-[#E1E1E1] border md:max-w-[544px] px-5 py-10 rounded-md flex flex-col gap-y-10">
             <h4 className="text-black font-bold text-lg tracking-tighter">
               Toyota Camry Specifications
@@ -211,7 +213,7 @@ export default function CarPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <GetQuote />
       </main>
     </>

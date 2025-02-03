@@ -32,10 +32,19 @@ const Testimonial = () => {
   return (
     <section className="xl:mx-32 md:mx-20 mx-5 my-24 md:min-h-[80vh] min-h-fit">
       <div className="flex flex-col gap-y-2">
-        <h5 className="text-[32px] leading-10 md:text-[42px] font-normal md:w-full w-[80%] tracking-tighter text-black">
+        <h5
+          className="text-[32px] leading-10 md:text-[42px] font-normal md:w-full w-[80%] tracking-tighter text-black"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+        >
           Hear from our Customers
         </h5>
-        <p className="text-[#969696] text-sm md:text-base font-normal tracking-tight max-w-[480px]">
+        <p
+          className="text-[#969696] text-sm md:text-base font-normal tracking-tight max-w-[480px]"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-delay="300"
+        >
           We’re not just selling cars... we’re building lasting relationships.
           When you buy from us, you’re becoming part of our family.
         </p>

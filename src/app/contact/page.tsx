@@ -69,7 +69,7 @@ const ContactUs = () => {
               </span>
             </div>
             <Link
-              href="tel:+2347063042598"
+              href="tel:+2348033095721"
               className="flex items-center gap-x-1 md:gap-x-2 mt-5"
             >
               <span className="text-2xl lg:text-[32px] font-normal text-brand-green-100">
@@ -120,7 +120,7 @@ const ContactUs = () => {
                 <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                   Tel:
                   <Link
-                    href="tel:+2347063042598"
+                    href="tel:+2348033095721"
                     className="flex items-center gap-x-1"
                   >
                     <span className="underline">09029465338</span>
