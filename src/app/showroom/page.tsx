@@ -217,8 +217,6 @@ export function CarShow({
             <div
               key={car?.slug?.current}
               className="border p-4 rounded-[24px]"
-              data-aos="fade-up"
-              data-aos-easing="linear"
             >
               <Image
                 src={car?.image?.asset?.url}
