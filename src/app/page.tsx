@@ -1,13 +1,10 @@
-"use client";
 import GetQuote from "@/components/shared/GetQuote";
 import Navbar from "@/components/shared/Navbar";
 import Testimonial from "@/components/Testimonial";
 import TopSeller from "@/components/TopSeller";
 import Image from "next/image";
 import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import React, { useEffect } from "react";
+import React from "react";
 
 interface WhyUs {
   header: string;
@@ -33,10 +30,7 @@ const whyUs: WhyUs[] = [
 ];
 
 const Home = () => {
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
+
   return (
     <>
       <Navbar />
@@ -45,8 +39,6 @@ const Home = () => {
           <div className="md:basis-full lg:basis-[40%] xl:ml-20 flex flex-col gap-y-6">
             <h1
               className="text-black text-[32px] md:text-[42px] font-bold tracking-tighter leading-[44px] md:leading-[50px]"
-              data-aos="fade-up"
-              data-aos-easing="linear"
             >
               Get <span className="text-brand-green-100">Affordable</span>{" "}
               Vehicles <br /> Used & Brand New in <br />{" "}
@@ -54,9 +46,6 @@ const Home = () => {
             </h1>
             <p
               className="text-base tracking-tighter font-normal text-black lg:max-w-[380px]"
-              data-aos="fade-up"
-              data-aos-easing="linear"
-              data-aos-delay="300"
             >
               Browse our collection of vehicles and make your pick, book a
               meeting with us to inspect your desired vehicle.
@@ -64,9 +53,6 @@ const Home = () => {
             <Link
               href="/showroom"
               className="bg-brand-green-100 transition-colors duration-200 ease-in-out hover:bg-black py-2.5 px-6 text-sm font-semibold text-white w-fit rounded-lg"
-              data-aos="fade-up"
-              data-aos-easing="linear"
-              data-aos-delay="600"
             >
               Browse our Cars
             </Link>
@@ -78,9 +64,6 @@ const Home = () => {
               width={720}
               height={480}
               className="md:h-[480px] md:w-[720px] h-[254px] w-full"
-              data-aos="fade-left"
-              data-aos-easing="linear"
-              data-aos-duration="1000"
             />
             <div className="flex flex-wrap gap-6 items-center justify-center lg:justify-end md:mr-28 lg:gap-x-6 xl:gap-x-12 md:gap-x-12 mt-12 w-full">
               <Image
@@ -134,9 +117,6 @@ const Home = () => {
         <section className="mb-32 xl:ml-20  px-5 lg:px-[50px]">
           <h3
             className="text-2xl md:text-[32px] font-normal text-black tracking-tighter"
-            data-aos="fade-right"
-            data-aos-easing="linear"
-            data-aos-duration="1000"
           >
             Why Buy From Us?
           </h3>
