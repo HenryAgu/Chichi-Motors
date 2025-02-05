@@ -230,7 +230,7 @@ export function CarShow({
                   <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
                     {car?.type}
                   </p>
-                  <h2 className="text-lg font-bold leading-[24.51px] text-black">
+                  <h2 className="uppercase text-lg font-bold leading-[24.51px] text-black">
                     {car?.year}{" "}
                     {Array.isArray(car?.brand)
                       ? car.brand.map((brand) => brand.title).join(", ")
