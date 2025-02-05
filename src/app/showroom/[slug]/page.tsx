@@ -130,7 +130,7 @@ export default function CarPage() {
                   </p>
                 </div>
                 <p className="font-bold lg:text-5xl md:text-4xl text-2xl text-brand-green-100">
-                ₦{car?.price}
+                  ₦{car?.price}
                 </p>
                 <Link
                   href={`https://wa.me/+2348033095721?text=Hey,%20I%20would%20like%20to%20make%20an%20enquiry%20about%20${car?.brand?.[0]?.title}%20${car?.name}`}
@@ -140,15 +140,15 @@ export default function CarPage() {
                   Inspect
                 </Link>
               </div>
-              <div className="mt-10 flex gap-x-2 items-center group">
+              <Link
+                href="/showroom"
+                className="mt-10 flex gap-x-2 items-center group"
+              >
                 <FaArrowLeftLong className="text-sm md:text-base duration-200 ease-out transition-all group-hover:text-brand-green-100" />
-                <Link
-                  href="/showroom"
-                  className="text-sm md:text-base duration-200 ease-out transition-all group-hover:text-brand-green-100"
-                >
+                <span className="text-sm md:text-base duration-200 ease-out transition-all group-hover:text-brand-green-100">
                   Go back
-                </Link>
-              </div>
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function CarPage() {
                   width={750}
                   height={550}
                   priority={true}
-                  className="aspect-[600/420] w-full"
+                  className="aspect-[600/420] w-full object-cover"
                 />
               )}
             </div>
