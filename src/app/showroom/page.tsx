@@ -223,7 +223,7 @@ export function CarShow({
                 alt={car?.name}
                 width={397}
                 height={322}
-                className=" mb-4 rounded-[8px] w-full h-[240px] lg:h-[322px]"
+                className=" mb-4 rounded-[8px] object-cover w-full h-[240px] lg:h-[322px]"
               />
               <div className="flex flex-col gap-y-3">
                 <div className="flex flex-col gap-y-3">
@@ -256,7 +256,7 @@ export function CarShow({
                 </div>
 
                 <p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
-                  {car?.price}
+                ₦{car?.price}
                 </p>
                 <Link
                   href={`/showroom/${car?.slug?.current}`}
