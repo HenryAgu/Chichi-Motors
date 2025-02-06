@@ -38,7 +38,7 @@ const socials: Socials[] = [
   {
     id: crypto.randomUUID(),
     image: "/images/whatsapp.svg",
-    path: "",
+    path: "https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle.",
   },
 ];
 
@@ -59,7 +59,7 @@ const Footer = () => {
               Find our Store
             </p>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
-              Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station, Eligbolo
+              Plot 165 G.U. Ake Road <br /> Blessed Willing Sun Limited
               <br /> Port Harcourt, Rivers State
             </span>
           </div>
@@ -69,7 +69,7 @@ const Footer = () => {
             </p>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
               E-mail: chichimotors@gmail.com <br />
-              Tel: 09029465338
+              Tel: 08033095721
             </span>
           </div>
         </div>
