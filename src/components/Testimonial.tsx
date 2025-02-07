@@ -7,24 +7,23 @@ interface Testimonials {
 
 const testimonial: Testimonials[] = [
   {
-    content:
-      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-    author: "Henry Agu Chukwuma",
+    content: "Great selection and unbeatable prices. The process was smooth and hassle-free!",
+    author: "Uchechi Umesi",
   },
   {
     content:
-      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+      "Had an incredible experience, From the seamless buying process to the outstanding performance of the car, everything has exceeded my expectations. ",
     author: "Kalu Daniel Obinna",
   },
   {
     content:
-      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
+      "Honest, friendly, and professional. I’ll definitely be coming back for my next car!",
     author: "Joel Okpara",
   },
   {
     content:
-      "At Chi Chi Motors, there are no hidden fees or surprises. The price you see is the price you&apos;ll pay. We believe in clear, upfront pricing so you can make.",
-    author: "Leonard Ijeoma",
+      "I got exactly what I was looking for at a great price. Super happy with my purchase!",
+    author: "Japheth Basil",
   },
 ];
 
