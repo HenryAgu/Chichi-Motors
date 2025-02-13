@@ -104,10 +104,10 @@ const ContactUs = () => {
                 <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                   E-mail:
                   <Link
-                    href="mailto:chichimotors@gmail.com"
+                    href="mailto:info.chichimotors@gmail.com"
                     className="flex items-center gap-x-1"
                   >
-                    <span className="underline">chichimotors@gmail.com</span>
+                    <span className="underline">info.chichimotors@gmail.com</span>
                     <Image
                       src="/images/green-arrow.svg"
                       alt="icon"
@@ -123,7 +123,7 @@ const ContactUs = () => {
                     href="tel:+2348033095721"
                     className="flex items-center gap-x-1"
                   >
-                    <span className="underline">09029465338</span>
+                    <span className="underline">08033095721</span>
                     <Image
                       src="/images/green-arrow.svg"
                       alt="icon"
