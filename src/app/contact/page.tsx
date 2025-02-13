@@ -92,8 +92,8 @@ const ContactUs = () => {
                 How to find Us
               </p>
               <span className="font-normal tracking-tight text-sm lg:text-base text-brand-green-100">
-                Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station,
-                Eligbolo <br /> Port Harcourt, Rivers State
+              Plot 165 G.U. Ake Road <br /> Blessed Willing Sun Limited
+              <br /> Port Harcourt, Rivers State
               </span>
             </div>
             <div className="flex flex-col gap-y-2">
