@@ -67,10 +67,12 @@ const Footer = () => {
             <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">
               Contact Us
             </p>
-            <span className="text-sm lg:text-base text-white font-normal tracking-tight">
-              E-mail: chichimotors@gmail.com <br />
+            <Link href="mailto:info.chichimotors@gmail.com" className="text-sm lg:text-base text-white font-normal tracking-tight hover:border-b">
+              E-mail: info.chichimotors@gmail.com <br />
+            </Link>
+            <Link href="tel:08033095721" className="text-sm lg:text-base text-white font-normal tracking-tight hover:border-b">
               Tel: 08033095721
-            </span>
+            </Link>
           </div>
         </div>
         <div className="basis-[60%] pt-16 md:pl-24 pb-[32px] flex flex-col gap-y-8 md:gap-y-[80px]">
