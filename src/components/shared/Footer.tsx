@@ -28,12 +28,12 @@ const socials: Socials[] = [
   {
     id: crypto.randomUUID(),
     image: "/images/facebook.svg",
-    path: "",
+    path: "https://www.facebook.com/profile.php?id=61572553993939",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/instagram.svg",
-    path: "",
+    path: "https://www.instagram.com/chichi_motors__/",
   },
   {
     id: crypto.randomUUID(),
