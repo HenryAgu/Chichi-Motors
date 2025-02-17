@@ -27,17 +27,17 @@ const socials: Socials[] = [
   {
     id: crypto.randomUUID(),
     image: "/images/facebook.svg",
-    path: "",
+    path: "https://www.facebook.com/profile.php?id=61572553993939",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/instagram.svg",
-    path: "",
+    path: "https://www.instagram.com/chichi_motors__/",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/whatsapp.svg",
-    path: "",
+    path: "https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle.",
   },
 ];
 
