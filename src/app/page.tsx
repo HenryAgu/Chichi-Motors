@@ -40,9 +40,9 @@ const Home = () => {
             <h1
               className="text-black text-[32px] md:text-[42px] font-bold tracking-tighter leading-[44px] md:leading-[50px]"
             >
-              Get <span className="text-brand-green-100">Affordable</span>{" "}
+              Get <h1 className="text-brand-green-100">Affordable</h1>{" "}
               Vehicles <br /> Used & Brand New in <br />{" "}
-              <span className="text-brand-green-100">Excellent</span> Condition
+              <h1 className="text-brand-green-100">Excellent</h1> Condition
             </h1>
             <p
               className="text-base tracking-tighter font-normal text-black lg:max-w-[380px]"
