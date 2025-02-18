@@ -76,7 +76,7 @@ const ShowRoom = () => {
 									className="w-fit md:w-auto"
 									onClick={() => setFilter("Foreign Used")}
 								>
-									Brand New
+									Foreign Used
 								</Button>
 								<Button
 									variant={filter === "Nigerian Used" ? "default" : "outline"}
@@ -84,7 +84,7 @@ const ShowRoom = () => {
 									className="w-fit md:w-auto"
 									onClick={() => setFilter("Nigerian Used")}
 								>
-									Used
+									Nigerian Used
 								</Button>
 								<Select
 									onValueChange={(value) => {
