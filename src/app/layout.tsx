@@ -11,9 +11,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Affordable New & Used Vehicles | Chichi Motors",
+  title: "Chichi Motors | Affordable New & Used Vehicles in Port Harcourt",
   description:
-    "Explore affordable vehicles, both used and brand new, in excellent condition with Chichi Motors. Browse our collection, book a meeting, and find your perfect car today.",
+    "Discover a wide range of affordable new and used vehicles at Chichi Motors in Port Harcourt. Quality inspected cars with transparent pricing and flexible financing options.",
   keywords: [
     "Chichi Motors",
     "affordable vehicles",
