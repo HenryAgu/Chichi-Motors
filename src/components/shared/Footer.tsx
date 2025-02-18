@@ -28,17 +28,17 @@ const socials: Socials[] = [
   {
     id: crypto.randomUUID(),
     image: "/images/facebook.svg",
-    path: "",
+    path: "https://www.facebook.com/profile.php?id=61572553993939",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/instagram.svg",
-    path: "",
+    path: "https://www.instagram.com/chichi_motors__/",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/whatsapp.svg",
-    path: "",
+    path: "https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle.",
   },
 ];
 
@@ -59,7 +59,7 @@ const Footer = () => {
               Find our Store
             </p>
             <span className="text-sm lg:text-base text-white font-normal tracking-tight">
-              Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station, Eligbolo
+              Plot 165 G.U. Ake Road <br /> Blessed Willing Sun Limited
               <br /> Port Harcourt, Rivers State
             </span>
           </div>
@@ -67,10 +67,12 @@ const Footer = () => {
             <p className="text-[32px] lg:text-[42px] text-white font-bold mb-2">
               Contact Us
             </p>
-            <span className="text-sm lg:text-base text-white font-normal tracking-tight">
-              E-mail: chichimotors@gmail.com <br />
-              Tel: 09029465338
-            </span>
+            <Link href="mailto:info.chichimotors@gmail.com" className="text-sm lg:text-base text-white font-normal tracking-tight hover:border-b">
+              E-mail: info.chichimotors@gmail.com <br />
+            </Link>
+            <Link href="tel:08033095721" className="text-sm lg:text-base text-white font-normal tracking-tight hover:border-b">
+              Tel: 08033095721
+            </Link>
           </div>
         </div>
         <div className="basis-[60%] pt-16 md:pl-24 pb-[32px] flex flex-col gap-y-8 md:gap-y-[80px]">

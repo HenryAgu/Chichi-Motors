@@ -27,17 +27,17 @@ const socials: Socials[] = [
   {
     id: crypto.randomUUID(),
     image: "/images/facebook.svg",
-    path: "",
+    path: "https://www.facebook.com/profile.php?id=61572553993939",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/instagram.svg",
-    path: "",
+    path: "https://www.instagram.com/chichi_motors__/",
   },
   {
     id: crypto.randomUUID(),
     image: "/images/whatsapp.svg",
-    path: "",
+    path: "https://wa.me/2348153270969?text=Hey,%20I%20would%20like%20to%20get%20a%20quotation%20to%20import%20a%20vehicle.",
   },
 ];
 
@@ -92,8 +92,8 @@ const ContactUs = () => {
                 How to find Us
               </p>
               <span className="font-normal tracking-tight text-sm lg:text-base text-brand-green-100">
-                Plot 165 G.U. Ake Road <br /> Beside Owo Filling Station,
-                Eligbolo <br /> Port Harcourt, Rivers State
+              Plot 165 G.U. Ake Road <br /> Blessed Willing Sun Limited
+              <br /> Port Harcourt, Rivers State
               </span>
             </div>
             <div className="flex flex-col gap-y-2">
@@ -104,10 +104,10 @@ const ContactUs = () => {
                 <span className="font-normal tracking-tight flex gap-x-1 items-center text-sm lg:text-base text-brand-green-100">
                   E-mail:
                   <Link
-                    href="mailto:chichimotors@gmail.com"
+                    href="mailto:info.chichimotors@gmail.com"
                     className="flex items-center gap-x-1"
                   >
-                    <span className="underline">chichimotors@gmail.com</span>
+                    <span className="underline">info.chichimotors@gmail.com</span>
                     <Image
                       src="/images/green-arrow.svg"
                       alt="icon"
@@ -123,7 +123,7 @@ const ContactUs = () => {
                     href="tel:+2348033095721"
                     className="flex items-center gap-x-1"
                   >
-                    <span className="underline">09029465338</span>
+                    <span className="underline">08033095721</span>
                     <Image
                       src="/images/green-arrow.svg"
                       alt="icon"

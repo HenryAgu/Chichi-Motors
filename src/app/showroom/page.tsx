@@ -196,81 +196,81 @@ export function CarShow({
 
 		const displayedCars = limit ? filteredCars?.slice(0, limit) : filteredCars;
 
-		return (
-			<>
-				{displayedCars?.length === 0 ? (
-					<div className="flex flex-col justify-center items-center h-[60vh] md:h-screen">
-						<FcCancel className="text-6xl lg:text-9xl" />
-						<p className="md:text-lg text-sm font-normal text-brand-green-100 text-center">
-							Car not available. <br /> Order via WhatsApp:
-							<Link
-								href={
-									"https://wa.me/+2348033095721?text=Hey,%20I%20would%20like%20to%20place%20an%20order"
-								}
-								className="underline"
-							>
-								Click Here
-							</Link>
-						</p>
-					</div>
-				) : (
-					<section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
-						{displayedCars?.map((car) => (
-							<div
-								key={car?.slug?.current}
-								className="border p-4 rounded-[24px]"
-							>
-								<Image
-									src={car?.image?.asset?.url}
-									alt={car?.name}
-									width={397}
-									height={322}
-									className=" mb-4 rounded-[8px] w-full h-[240px] lg:h-[322px]"
-								/>
-								<div className="flex flex-col gap-y-3">
-									<div className="flex flex-col gap-y-3">
-										<p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
-											{car?.type}
-										</p>
-										<h2 className="text-lg font-bold leading-[24.51px] text-black">
-											{car?.year}{" "}
-											{Array.isArray(car?.brand)
-												? car.brand.map((brand) => brand.title).join(", ")
-												: ""}{" "}
-											{car?.name}
-										</h2>
-									</div>
-									<div className="flex gap-x-4">
-										<p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-											<span
-												className="h-[16px] w-[16px] rounded-full"
-												style={{ backgroundColor: car?.exteriorColor }}
-											/>
-											{car?.exteriorColor} Exterior
-										</p>
-										<p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-											<span
-												className="h-[16px] w-[16px] rounded-full"
-												style={{ backgroundColor: car?.interiorColor }}
-											/>
-											{car?.interiorColor} Interior
-										</p>
-									</div>
+  return (
+    <>
+      {displayedCars?.length === 0 ? (
+        <div className="flex flex-col justify-center items-center h-[60vh] md:h-screen">
+          <FcCancel className="text-6xl lg:text-9xl" />
+          <p className="md:text-lg text-sm font-normal text-brand-green-100 text-center">
+            Car not available. <br /> Order via WhatsApp:
+            <Link
+              href={
+                "https://wa.me/+2348033095721?text=Hey,%20I%20would%20like%20to%20place%20an%20order"
+              }
+              className="underline"
+            >
+              Click Here
+            </Link>
+          </p>
+        </div>
+      ) : (
+        <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+          {displayedCars?.map((car) => (
+            <div
+              key={car?.slug?.current}
+              className="border p-4 rounded-[24px]"
+            >
+              <Image
+                src={car?.image?.asset?.url}
+                alt={car?.name}
+                width={397}
+                height={322}
+                className=" mb-4 rounded-[8px] object-cover w-full h-[240px] lg:h-[322px]"
+              />
+              <div className="flex flex-col gap-y-3">
+                <div className="flex flex-col gap-y-3">
+                  <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
+                    {car?.type}
+                  </p>
+                  <h2 className="uppercase text-lg font-bold leading-[24.51px] text-black">
+                    {car?.year}{" "}
+                    {Array.isArray(car?.brand)
+                      ? car.brand.map((brand) => brand.title).join(", ")
+                      : ""}{" "}
+                    {car?.name}
+                  </h2>
+                </div>
+                <div className="flex gap-x-4">
+                  <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                    <span
+                      className="h-[16px] w-[16px] rounded-full"
+                      style={{ backgroundColor: car?.exteriorColor }}
+                    />
+                    {car?.exteriorColor} Exterior
+                  </p>
+                  <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                    <span
+                      className="h-[16px] w-[16px] rounded-full"
+                      style={{ backgroundColor: car?.interiorColor }}
+                    />
+                    {car?.interiorColor} Interior
+                  </p>
+                </div>
 
-									<p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
-										{car?.price}
-									</p>
-									<Link
-										href={`/showroom/${car?.slug?.current}`}
-										className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] text-sm md:text-base font-bold mt-5 text-white"
-									>
-										Show Details
-									</Link>
-								</div>
-							</div>
-						))}
-					</section>
-				)}
-			</>
-		);
-	}
+                <p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
+                ₦{car?.price}
+                </p>
+                <Link
+                  href={`/showroom/${car?.slug?.current}`}
+                  className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] text-sm md:text-base font-bold mt-5 text-white"
+                >
+                  Show Details
+                </Link>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+    </>
+  );
+}

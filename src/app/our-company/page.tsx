@@ -28,7 +28,7 @@ const OurCompany = () => {
         <div className="mt-5 md:mt-10 flex md:flex-row flex-col gap-y-10">
           <div className="basis-[50%]">
             <Image
-              src="/images/gray.png"
+              src="/images/company.jpg"
               alt="gray"
               width={454}
               height={500}
@@ -71,7 +71,7 @@ const OurCompany = () => {
                 feel confident in your decision.
               </p>
               <p className="text-black text-sm md:text-base font-normal mt-6">
-                ### Our Promise to You We’re not just selling cars—we’re
+                Our Promise to You We’re not just selling cars—we’re
                 building lasting relationships. When you buy from us, you’re
                 becoming part of the Chi Chi Motors family. We’re here for you
                 long after you drive off the lot, with ongoing support, service,
