@@ -29,7 +29,7 @@ export type CarType = {
 };
 
 export const fetchCars = async (
-  filter: "All" | "New" | "Used",
+  filter: "All" | "Foreign Used" | "Nigerian Used",
   searchQuery: string,
   selectedBrand: string | null
 ): Promise<CarType[]> => {

@@ -11,8 +11,8 @@ export const carType = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'New', value: 'New' },
-          { title: 'Used', value: 'Used' },
+          { title: 'Foreign Used', value: 'Foreign Used' },
+          { title: 'Nigerian Used', value: 'Nigerian Used' },
         ],
       },
     }),
