@@ -24,7 +24,9 @@ type CarShowProps = {
 };
 
 const ShowRoom = () => {
-  const [filter, setFilter] = useState<"All" | "New" | "Used">("All");
+  const [filter, setFilter] = useState<"All" | "Foreign Used" | "Nigerian Used">(
+			"All",
+		);
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -41,158 +43,158 @@ const ShowRoom = () => {
     );
 
   return (
-    <>
-      <Navbar />
-      <main className="pt-28 px-5 lg:px-[50px]">
-        <section>
-          <p className="text-black text-[32px] leading-[43.58px] font-normal mb-14">
-            Showroom
-          </p>
-          <div className="flex items-center justify-start gap-10 flex-col md:flex-row">
-            <div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5 w-full md:w-[400px]">
-              <input
-                placeholder="Search by Name, Brand, or Colour"
-                className="w-full text-garage-gray-650 text-sm focus:ring-transparent focus:outline-none"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <FiSearch className="text-garage-gray-650 w-[15.24px] h-[15.24px]" />
-            </div>
+			<>
+				<Navbar />
+				<main className="pt-28 px-5 lg:px-[50px]">
+					<section>
+						<p className="text-black text-[32px] leading-[43.58px] font-normal mb-14">
+							Showroom
+						</p>
+						<div className="flex items-center justify-start gap-10 flex-col md:flex-row">
+							<div className="flex items-center gap-x-2 border-b border-[#969696] px-3.5 py-2.5 w-full md:w-[400px]">
+								<input
+									placeholder="Search by Name, Brand, or Colour"
+									className="w-full text-garage-gray-650 text-sm focus:ring-transparent focus:outline-none"
+									value={searchQuery}
+									onChange={(e) => setSearchQuery(e.target.value)}
+								/>
+								<FiSearch className="text-garage-gray-650 w-[15.24px] h-[15.24px]" />
+							</div>
 
-            <div className="flex flex-wrap md:flex-nowrap items-start md:items-center justify-start md:justify-center gap-4 w-full md:w-auto">
-              <Button
-                variant={filter === "All" ? "default" : "outline"}
-                size="sm"
-                className="w-fit md:w-auto"
-                onClick={() => setFilter("All")}
-              >
-                All
-              </Button>
-              <Button
-                variant={filter === "New" ? "default" : "outline"}
-                size="sm"
-                className="w-fit md:w-auto"
-                onClick={() => setFilter("New")}
-              >
-                Brand New
-              </Button>
-              <Button
-                variant={filter === "Used" ? "default" : "outline"}
-                size="sm"
-                className="w-fit md:w-auto"
-                onClick={() => setFilter("Used")}
-              >
-                Used
-              </Button>
-              <Select
-                onValueChange={(value) => {
-                  setSelectedBrand(value === "All" ? null : value);
-                }}
-              >
-                <SelectTrigger className="w-fit md:w-[180px]">
-                  <SelectValue placeholder="Select a Brand" />
-                </SelectTrigger>
+							<div className="flex flex-wrap md:flex-nowrap items-start md:items-center justify-start md:justify-center gap-4 w-full md:w-auto">
+								<Button
+									variant={filter === "All" ? "default" : "outline"}
+									size="sm"
+									className="w-fit md:w-auto"
+									onClick={() => setFilter("All")}
+								>
+									All
+								</Button>
+								<Button
+									variant={filter === "Foreign Used" ? "default" : "outline"}
+									size="sm"
+									className="w-fit md:w-auto"
+									onClick={() => setFilter("Foreign Used")}
+								>
+									Foreign Used
+								</Button>
+								<Button
+									variant={filter === "Nigerian Used" ? "default" : "outline"}
+									size="sm"
+									className="w-fit md:w-auto"
+									onClick={() => setFilter("Nigerian Used")}
+								>
+									Nigerian Used
+								</Button>
+								<Select
+									onValueChange={(value) => {
+										setSelectedBrand(value === "All" ? null : value);
+									}}
+								>
+									<SelectTrigger className="w-fit md:w-[180px]">
+										<SelectValue placeholder="Select a Brand" />
+									</SelectTrigger>
 
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="All" className="text-[13px]">
-                      All
-                    </SelectItem>
-                    {carBrands?.map((brand, index) => (
-                      <SelectItem
-                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                        key={index}
-                        value={brand}
-                        className="text-[13px]"
-                      >
-                        {brand}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </section>
-        <CarShow
-          filter={filter}
-          selectedBrand={selectedBrand}
-          searchQuery={searchQuery}
-        />
-      </main>
-    </>
-  );
+									<SelectContent>
+										<SelectGroup>
+											<SelectItem value="All" className="text-[13px]">
+												All
+											</SelectItem>
+											{carBrands?.map((brand, index) => (
+												<SelectItem
+													// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+													key={index}
+													value={brand}
+													className="text-[13px]"
+												>
+													{brand}
+												</SelectItem>
+											))}
+										</SelectGroup>
+									</SelectContent>
+								</Select>
+							</div>
+						</div>
+					</section>
+					<CarShow
+						filter={filter}
+						selectedBrand={selectedBrand}
+						searchQuery={searchQuery}
+					/>
+				</main>
+			</>
+		);
 };
 
 export default ShowRoom;
 
 export function CarShow({
-  limit,
-  filter,
-  selectedBrand,
-  searchQuery,
-}: CarShowProps & {
-  filter: "All" | "New" | "Used";
-  selectedBrand: string | null;
-  searchQuery: string;
-}) {
-  const {
-    data: cars,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["cars", filter, selectedBrand, searchQuery],
-    queryFn: () => fetchCars(filter, searchQuery, selectedBrand),
-  });
+		limit,
+		filter,
+		selectedBrand,
+		searchQuery,
+	}: CarShowProps & {
+		filter: "All" | "Foreign Used" | "Nigerian Used";
+		selectedBrand: string | null;
+		searchQuery: string;
+	}) {
+		const {
+			data: cars,
+			isLoading,
+			error,
+		} = useQuery({
+			queryKey: ["cars", filter, selectedBrand, searchQuery],
+			queryFn: () => fetchCars(filter, searchQuery, selectedBrand),
+		});
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <Spinner size={20} />
-      </div>
-    );
+		if (isLoading)
+			return (
+				<div className="flex justify-center items-center h-screen">
+					<Spinner size={20} />
+				</div>
+			);
 
-  if (error)
-    return (
-      <div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
-        <FaRegFaceSadTear className="text-6xl lg:text-9xl" />
-        <span className="text-base">An error occurred</span>
-        <span>
-          Go to{" "}
-          <Link href="/" className="text-brand-green-100 text-base">
-            Home
-          </Link>
-        </span>
-      </div>
-    );
+		if (error)
+			return (
+				<div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
+					<FaRegFaceSadTear className="text-6xl lg:text-9xl" />
+					<span className="text-base">An error occurred</span>
+					<span>
+						Go to{" "}
+						<Link href="/" className="text-brand-green-100 text-base">
+							Home
+						</Link>
+					</span>
+				</div>
+			);
 
-  const filteredCars = cars?.filter((car) => {
-    if (selectedBrand === "All" || !selectedBrand) {
-      return true;
-    }
+		const filteredCars = cars?.filter((car) => {
+			if (selectedBrand === "All" || !selectedBrand) {
+				return true;
+			}
 
-    // Check if the selected brand exists in the car's brand array
-    const carBrands = car.brand.map((b) => b.title);
-    if (!carBrands.includes(selectedBrand)) {
-      return false;
-    }
+			// Check if the selected brand exists in the car's brand array
+			const carBrands = car.brand.map((b) => b.title);
+			if (!carBrands.includes(selectedBrand)) {
+				return false;
+			}
 
-    if (searchQuery) {
-      const lowerCaseQuery = searchQuery.toLowerCase();
-      return (
-        car.name.toLowerCase().includes(lowerCaseQuery) ||
-        carBrands.some((brand) =>
-          brand.toLowerCase().includes(lowerCaseQuery)
-        ) ||
-        car.exteriorColor.toLowerCase().includes(lowerCaseQuery) ||
-        car.interiorColor.toLowerCase().includes(lowerCaseQuery)
-      );
-    }
+			if (searchQuery) {
+				const lowerCaseQuery = searchQuery.toLowerCase();
+				return (
+					car.name.toLowerCase().includes(lowerCaseQuery) ||
+					carBrands.some((brand) =>
+						brand.toLowerCase().includes(lowerCaseQuery),
+					) ||
+					car.exteriorColor.toLowerCase().includes(lowerCaseQuery) ||
+					car.interiorColor.toLowerCase().includes(lowerCaseQuery)
+				);
+			}
 
-    return true;
-  });
+			return true;
+		});
 
-  const displayedCars = limit ? filteredCars?.slice(0, limit) : filteredCars;
+		const displayedCars = limit ? filteredCars?.slice(0, limit) : filteredCars;
 
   return (
     <>
