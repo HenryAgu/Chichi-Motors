@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
 import {
@@ -129,72 +129,94 @@ const ShowRoom = () => {
 export default ShowRoom;
 
 export function CarShow({
-		limit,
-		filter,
-		selectedBrand,
-		searchQuery,
-	}: CarShowProps & {
-		filter: "All" | "Foreign Used" | "Nigerian Used";
-		selectedBrand: string | null;
-		searchQuery: string;
-	}) {
-		const {
-			data: cars,
-			isLoading,
-			error,
-		} = useQuery({
-			queryKey: ["cars", filter, selectedBrand, searchQuery],
-			queryFn: () => fetchCars(filter, searchQuery, selectedBrand),
-		});
+  limit = 6, 
+  filter,
+  selectedBrand,
+  searchQuery,
+}: CarShowProps & {
+  filter: "All" | "Foreign Used" | "Nigerian Used";
+  selectedBrand: string | null;
+  searchQuery: string;
+}) {
+  const {
+    data: cars,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["cars", filter, selectedBrand, searchQuery],
+    queryFn: () => fetchCars(filter, searchQuery, selectedBrand),
+  });
 
-		if (isLoading)
-			return (
-				<div className="flex justify-center items-center h-screen">
-					<Spinner size={20} />
-				</div>
-			);
+  const [visibleCount, setVisibleCount] = useState(limit);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
 
-		if (error)
-			return (
-				<div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
-					<FaRegFaceSadTear className="text-6xl lg:text-9xl" />
-					<span className="text-base">An error occurred</span>
-					<span>
-						Go to{" "}
-						<Link href="/" className="text-brand-green-100 text-base">
-							Home
-						</Link>
-					</span>
-				</div>
-			);
+  useEffect(() => {
+    setVisibleCount(limit); // Reset on filter/search change
+  }, [filter, selectedBrand, searchQuery, limit]);
 
-		const filteredCars = cars?.filter((car) => {
-			if (selectedBrand === "All" || !selectedBrand) {
-				return true;
-			}
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting && cars && visibleCount < cars.length) {
+          setVisibleCount((prev) => prev + limit);
+        }
+      },
+      { threshold: 1 }
+    );
 
-			// Check if the selected brand exists in the car's brand array
-			const carBrands = car.brand.map((b) => b.title);
-			if (!carBrands.includes(selectedBrand)) {
-				return false;
-			}
+    if (loaderRef.current) observer.observe(loaderRef.current);
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    };
+  }, [cars, visibleCount, limit]);
 
-			if (searchQuery) {
-				const lowerCaseQuery = searchQuery.toLowerCase();
-				return (
-					car.name.toLowerCase().includes(lowerCaseQuery) ||
-					carBrands.some((brand) =>
-						brand.toLowerCase().includes(lowerCaseQuery),
-					) ||
-					car.exteriorColor.toLowerCase().includes(lowerCaseQuery) ||
-					car.interiorColor.toLowerCase().includes(lowerCaseQuery)
-				);
-			}
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner size={20} />
+      </div>
+    );
 
-			return true;
-		});
+  if (error)
+    return (
+      <div className="h-[60vh] flex flex-col gap-y-2 items-center justify-center">
+        <FaRegFaceSadTear className="text-6xl lg:text-9xl" />
+        <span className="text-base">An error occurred</span>
+        <span>
+          Go to{" "}
+          <Link href="/" className="text-brand-green-100 text-base">
+            Home
+          </Link>
+        </span>
+      </div>
+    );
 
-		const displayedCars = limit ? filteredCars?.slice(0, limit) : filteredCars;
+const filteredCars = cars
+  ? cars.filter((car) => {
+      if (selectedBrand === "All" || !selectedBrand) {
+        return true;
+      }
+
+      const carBrands = car.brand.map((b) => b.title);
+      if (!carBrands.includes(selectedBrand)) return false;
+
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        return (
+          car.name.toLowerCase().includes(q) ||
+          carBrands.some((b) => b.toLowerCase().includes(q)) ||
+          car.exteriorColor.toLowerCase().includes(q) ||
+          car.interiorColor.toLowerCase().includes(q)
+        );
+      }
+
+      return true;
+    })
+  : [];
+
+
+  const displayedCars = filteredCars?.slice(0, visibleCount);
 
   return (
     <>
@@ -214,63 +236,70 @@ export function CarShow({
           </p>
         </div>
       ) : (
-        <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
-          {displayedCars?.map((car) => (
-            <div
-              key={car?.slug?.current}
-              className="border p-4 rounded-[24px]"
-            >
-              <Image
-                src={car?.image?.asset?.url}
-                alt={car?.name}
-                width={397}
-                height={322}
-                className=" mb-4 rounded-[8px] object-cover w-full h-[240px] lg:h-[322px]"
-              />
-              <div className="flex flex-col gap-y-3">
+        <>
+          <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-28 pt-5 overflow-hidden">
+            {displayedCars?.map((car) => (
+              <div
+                key={car?.slug?.current}
+                className="border p-4 rounded-[24px]"
+              >
+                <Image
+                  src={car?.image?.asset?.url}
+                  alt={car?.name}
+                  width={397}
+                  height={322}
+                  className=" mb-4 rounded-[8px] object-cover w-full h-[240px] lg:h-[322px]"
+                />
                 <div className="flex flex-col gap-y-3">
-                  <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
-                    {car?.type}
-                  </p>
-                  <h2 className="uppercase text-lg font-bold leading-[24.51px] text-black">
-                    {car?.year}{" "}
-                    {Array.isArray(car?.brand)
-                      ? car.brand.map((brand) => brand.title).join(", ")
-                      : ""}{" "}
-                    {car?.name}
-                  </h2>
-                </div>
-                <div className="flex gap-x-4">
-                  <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                    <span
-                      className="h-[16px] w-[16px] rounded-full"
-                      style={{ backgroundColor: car?.exteriorColor }}
-                    />
-                    {car?.exteriorColor} Exterior
-                  </p>
-                  <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
-                    <span
-                      className="h-[16px] w-[16px] rounded-full"
-                      style={{ backgroundColor: car?.interiorColor }}
-                    />
-                    {car?.interiorColor} Interior
-                  </p>
-                </div>
+                  <div className="flex flex-col gap-y-3">
+                    <p className="text-[13px] text-brand-green-100 font-semibold leading-[17.7px]">
+                      {car?.type}
+                    </p>
+                    <h2 className="uppercase text-lg font-bold leading-[24.51px] text-black">
+                      {car?.year}{" "}
+                      {Array.isArray(car?.brand)
+                        ? car.brand.map((brand) => brand.title).join(", ")
+                        : ""}{" "}
+                      {car?.name}
+                    </h2>
+                  </div>
+                  <div className="flex gap-x-4">
+                    <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                      <span
+                        className="h-[16px] w-[16px] rounded-full"
+                        style={{ backgroundColor: car?.exteriorColor }}
+                      />
+                      {car?.exteriorColor} Exterior
+                    </p>
+                    <p className="inline-flex items-center gap-x-2 text-[13px] font-semibold leading-[17.7px] text-[#969696]">
+                      <span
+                        className="h-[16px] w-[16px] rounded-full"
+                        style={{ backgroundColor: car?.interiorColor }}
+                      />
+                      {car?.interiorColor} Interior
+                    </p>
+                  </div>
 
-                <p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
-                ₦{car?.price}
-                </p>
-                <Link
-                  href={`/showroom/${car?.slug?.current}`}
-                  className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] text-sm md:text-base font-bold mt-5 text-white"
-                >
-                  Show Details
-                </Link>
+                  <p className="font-bold leading-[32.68px] text-2xl text-brand-green-100">
+                    ₦{car?.price}
+                  </p>
+                  <Link
+                    href={`/showroom/${car?.slug?.current}`}
+                    className="px-8 py-3 w-full flex items-center justify-center bg-brand-green-100 rounded-[32px] text-sm md:text-base font-bold mt-5 text-white"
+                  >
+                    Show Details
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
+
+          <div ref={loaderRef} className="flex items-center justify-center text-center py-4 w-full mx-auto">
+            {visibleCount < filteredCars.length ? (<Spinner size={30}/>) : ""}
+          </div>
+        </>
       )}
     </>
   );
 }
+

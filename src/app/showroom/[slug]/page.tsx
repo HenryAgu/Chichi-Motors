@@ -11,26 +11,6 @@ import Navbar from "@/components/shared/Navbar";
 import { FaRegFaceSadTear } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-// interface VehicleInfo {
-//   title: string;
-//   content: string;
-// }
-
-// const vehicleInfo: VehicleInfo[] = [
-//   { title: "Car Model", content: "Vehicle history" },
-//   { title: "Car Model", content: "Vehicle history" },
-//   { title: "Manufacture Year", content: "2015" },
-//   { title: "Fuel Type", content: "Petrol" },
-//   { title: "Drive Type", content: "Vehicle history" },
-//   { title: "Car Model", content: "Vehicle history" },
-//   { title: "Car Model", content: "Vehicle history" },
-//   { title: "Car Model", content: "Vehicle history" },
-// ];
-
-// const midpoint = Math.ceil(vehicleInfo.length / 2);
-// const firstHalf = vehicleInfo.slice(0, midpoint);
-// const secondHalf = vehicleInfo.slice(midpoint);
-
 export default function CarPage() {
   const pathname = usePathname();
   const slug = pathname.split("/").pop();
